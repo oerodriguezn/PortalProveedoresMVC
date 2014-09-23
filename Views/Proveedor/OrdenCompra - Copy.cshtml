@@ -1,0 +1,241 @@
+﻿@using PortalProveedoresMVC.Models;
+@{
+    Layout = null;
+    BioOrdenesCompra ODC = (BioOrdenesCompra)ViewBag.ODC;
+    BioProveedores Proveedor = (BioProveedores)ViewBag.Proveedor;
+    Double? NoEmpaques = 0;
+    Double? NoBultos = 0;
+    Double? NoUnidades = 0;
+    Double? NoKilos = 0;
+    Double NoReq = 0;
+    IEnumerable<BioOrdenesCompraDetalle> detalle = new  List<BioOrdenesCompraDetalle> ();
+    if (ViewBag.DetalleODC != null)
+    {
+        detalle = ViewBag.DetalleODC;
+       // NoEmpaques = detalle.Sum(p=>p.)
+        NoKilos = detalle.Sum(p => p.Kg);
+        NoBultos = detalle.Sum(p => p.Bultos);
+        NoUnidades = detalle.Sum(p => p.UnidadesOdc);
+    }
+    int LineasRelleno = 4;
+    if (detalle.Count() < 4 && detalle.Count()>0)
+    { 
+        LineasRelleno = 7 - detalle.Count();
+    }
+    }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Orden de Compra</title>
+</head>
+<body>
+    <div> 
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td colspan="2" align="right">
+                    <img src="~/Content/Images/LogoODC.png" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <b>ALIMENTOS FM, C.A.</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    AV. 96, EDIF. TORRE BOD, PISO 15, LOCAL 8<br />
+                    TELEFONOS: -0241-824.01.73 / 51.68
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <p>RIF: <b>J-31721968-6</b></p>
+                </td>
+                <td align="right">
+                    <p><b>ORDEN DE COMPRA No:</b>@ODC.Documento</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <p>FECHA EMISIÓN: @ODC.FechaEmision.ToString("dd/MM/yyyy")</p>
+                    <p>FECHA RECEPCIÓN: @ODC.FechaRecepcion.ToString("dd/MM/yyyy")</p>
+                    <p>FECHA VENCIMIENTO: @ODC.FechaVencimiento.ToString("dd/MM/yyyy")</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PROVEEDOR
+                    <br />CODIGO: @Proveedor.Codigo
+                </td>
+                <td>
+                    ENTREGAR A
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>@Proveedor.Proveedor</p>
+                    <p>@Proveedor.Direccion</p>
+                    <p>@Proveedor.Telefono</p>
+                </td>
+                <td valign="top">
+                    <p>@ODC.Tienda</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+                            <td width="15%">
+                                CODIGO
+                            </td>
+                            <td width="35%">
+                                DESCRIPIÓN
+                            </td>
+                            <td width="10%">
+                                PRE.
+                            </td>
+                            <td width="10%">
+                                CANTIDAD .SOL. EMPAQUES
+                            </td>
+                            <td width="10%">
+                                COSTO UNITARIO
+                            </td>
+                            <td width="10%">
+                                COSTO POR EMPAQUE
+                            </td>
+                            <td width="10%">
+                                SUB TOTAL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">
+                                <hr />
+                            </td>
+                        </tr>
+                        @if (detalle != null)
+                        {
+                            foreach (BioOrdenesCompraDetalle item in detalle)
+                        {
+                            <tr>
+                                <td>
+                                    @item.CodigoProducto
+                                </td>
+                                <td>
+                                    @item.Producto
+                                </td>
+                                <td>
+                                    @item.Presentacion
+                                </td>
+                                <td>
+                                   @item.Cantidad
+                                </td>
+                                <td>
+                                    @item.Costo
+                                </td>
+                                <td>
+                                   
+                                </td>
+                                <td>
+                                    @item.SubTotal
+                                </td>
+                            </tr>
+                        }
+                        }
+                        @for (int i = 0; i < LineasRelleno; i++)
+                        {
+                            <tr>
+                                <td colspan="7">
+                                   
+                                </td>
+                            </tr>
+                        }          
+                        <tr>
+                            <td colspan="7">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nro.Empq.:</td>
+                            <td>@NoEmpaques</td>
+                            <td>Nro. Bultos:</td>
+                            <td>@NoBultos</td>
+                            <td></td>
+                            <td>Sub Total Bs.:</td>
+                            <td>@ODC.SubTotal</td>  
+                        </tr>
+                        <tr>
+                            <td>Nro. Unidades.:</td>
+                            <td>@NoUnidades</td>
+                            <td>Nro. Kilos:</td>
+                            <td>@NoKilos</td>
+                            <td></td>
+                            <td>I.V.A. Bs</td>
+                            <td>@ODC.Impuesto</td>
+                        </tr>
+                        <tr>
+                            <td>Nro. Req.:</td>
+                            <td>@NoReq</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total Bs</td>
+                            <td>@ODC.Total</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">
+                                <hr />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    OBSERVACIÓN
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @ODC.Observacion
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br />
+                    <br />
+                 </td>
+            </tr>
+            <tr>
+                <td align="center">
+                  PROVEEDOR
+                </td>
+                <td align="center">AUTORIZADO POR</td>
+            </tr>
+            <tr>
+                <td align="center">
+                  <br /><br /> ________________________
+                </td>
+                <td align="center"><br /><br />________________________</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VAD10Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VAD10.dbo.MA_INVENTARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="MA_INVENTARIO">
+    <Key>
+      <PropertyRef Name="c_CONCEPTO" />
+      <PropertyRef Name="c_DOCUMENTO" />
+      <PropertyRef Name="d_FECHA" />
+      <PropertyRef Name="c_DESCRIPCION" />
+      <PropertyRef Name="c_STATUS" />
+      <PropertyRef Name="c_CODPROVEEDOR" />
+      <PropertyRef Name="c_CODLOCALIDAD" />
+      <PropertyRef Name="c_codmoneda" />
+      <PropertyRef Name="n_FACTORCAMBIO" />
+      <PropertyRef Name="n_DESCUENTO" />
+      <PropertyRef Name="c_OBSERVACION" />
+      <PropertyRef Name="c_RELACION" />
+      <PropertyRef Name="c_CODCOMPRADOR" />
+      <PropertyRef Name="c_DEP_ORIG" />
+      <PropertyRef Name="c_DEP_DEST" />
+      <PropertyRef Name="c_MOTIVO" />
+      <PropertyRef Name="c_codtransporte" />
+      <PropertyRef Name="c_ejecutor" />
+      <PropertyRef Name="c_factura" />
+      <PropertyRef Name="c_transportista" />
+      <PropertyRef Name="n_cantidad_compra" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="CODCONCEPTO" />
+      <PropertyRef Name="cs_comprobanteContable" />
+      <PropertyRef Name="ds_horainicio" />
+      <PropertyRef Name="ds_horafinal" />
+      <PropertyRef Name="CS_CODLOCALIDAD" />
+      <PropertyRef Name="CS_NUMERO_TRANSFERENCIA" />
+      <PropertyRef Name="CS_CODUNIDAD" />
+      <PropertyRef Name="CS_NUMTRANSF_DESTINO" />
+    </Key>
+    <Property Name="c_CONCEPTO" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="c_DOCUMENTO" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="d_FECHA" Type="datetime" Nullable="false" />
+    <Property Name="c_DESCRIPCION" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_STATUS" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="c_CODPROVEEDOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_CODLOCALIDAD" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_codmoneda" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="n_FACTORCAMBIO" Type="float" Nullable="false" />
+    <Property Name="n_DESCUENTO" Type="float" Nullable="false" />
+    <Property Name="c_OBSERVACION" Type="ntext" Nullable="false" />
+    <Property Name="c_RELACION" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="c_CODCOMPRADOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_DEP_ORIG" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_DEP_DEST" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_MOTIVO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_codtransporte" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_ejecutor" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_factura" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="c_transportista" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="n_cantidad_compra" Type="float" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODCONCEPTO" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cs_comprobanteContable" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ds_horainicio" Type="datetime" Nullable="false" />
+    <Property Name="ds_horafinal" Type="datetime" Nullable="false" />
+    <Property Name="CS_CODLOCALIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CS_NUMERO_TRANSFERENCIA" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CS_CODUNIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CS_NUMTRANSF_DESTINO" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MA_PRODUCTOS">
+    <Key>
+      <PropertyRef Name="C_CODIGO" />
+    </Key>
+    <Property Name="C_CODIGO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="C_DESCRI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_departamento" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="c_grupo" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="c_subgrupo" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="c_marca" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="c_modelo" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="c_procede" Type="bit" Nullable="false" />
+    <Property Name="n_costoact" Type="float" Nullable="false" />
+    <Property Name="n_costoant" Type="float" Nullable="false" />
+    <Property Name="n_costopro" Type="float" Nullable="false" />
+    <Property Name="n_costorep" Type="float" Nullable="false" />
+    <Property Name="n_precio1" Type="float" Nullable="false" />
+    <Property Name="n_precio2" Type="float" Nullable="false" />
+    <Property Name="n_precio3" Type="float" Nullable="false" />
+    <Property Name="c_seriales" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="c_compuesto" Type="int" Nullable="false" />
+    <Property Name="c_presenta" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="n_peso" Type="float" Nullable="false" />
+    <Property Name="n_volumen" Type="float" Nullable="false" />
+    <Property Name="n_cantibul" Type="float" Nullable="false" />
+    <Property Name="n_pesobul" Type="float" Nullable="false" />
+    <Property Name="n_volbul" Type="float" Nullable="false" />
+    <Property Name="c_fileimagen" Type="image" />
+    <Property Name="n_impuesto1" Type="float" Nullable="false" />
+    <Property Name="n_impuesto2" Type="float" Nullable="false" />
+    <Property Name="n_impuesto3" Type="float" Nullable="false" />
+    <Property Name="c_cod_arancel" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="c_des_arancel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="n_por_arancel" Type="float" Nullable="false" />
+    <Property Name="n_costo_original" Type="float" Nullable="false" />
+    <Property Name="c_observacio" Type="ntext" Nullable="false" />
+    <Property Name="n_activo" Type="int" Nullable="false" />
+    <Property Name="n_tipopeso" Type="int" Nullable="false" />
+    <Property Name="n_precioO" Type="float" Nullable="false" />
+    <Property Name="f_inicial" Type="datetime" Nullable="false" />
+    <Property Name="f_final" Type="datetime" Nullable="false" />
+    <Property Name="h_inicial" Type="datetime" Nullable="false" />
+    <Property Name="h_final" Type="datetime" Nullable="false" />
+    <Property Name="add_date" Type="datetime" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Nullable="false" />
+    <Property Name="c_codfabricante" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="HABLADOR" Type="int" Nullable="false" />
+    <Property Name="C_CODMONEDA" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CANT_DECIMALES" Type="int" Nullable="false" />
+    <Property Name="MONEDA_ANT" Type="float" Nullable="false" />
+    <Property Name="MONEDA_ACT" Type="float" Nullable="false" />
+    <Property Name="MONEDA_PRO" Type="float" Nullable="false" />
+    <Property Name="C_CODIGO_BASE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_DESCRI_BASE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT3" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT4" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT5" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT6" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT7" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TEXT8" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATE1" Type="datetime" Nullable="false" />
+    <Property Name="NUME1" Type="float" Nullable="false" />
+    <Property Name="N_CANTIDAD_TMP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="C_COD_PLANTILLA" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_usuarioAdd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_usuarioupd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="N_PROD_EXT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="N_PRO_EXT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NU_TIPO_PRODUCTO" Type="int" Nullable="false" />
+    <Property Name="nu_insumointerno" Type="int" Nullable="false" />
+    <Property Name="nu_precioregulado" Type="int" Nullable="false" />
+    <Property Name="nu_pocentajemerma" Type="float" Nullable="false" />
+    <Property Name="nu_nivelClave" Type="int" Nullable="false" />
+    <Property Name="CU_DESCRIPCION_CORTA" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bs_permiteteclado" Type="bit" Nullable="false" />
+    <Property Name="bs_permitecantidad" Type="bit" Nullable="false" />
+    <Property Name="nu_stockmin" Type="float" Nullable="false" />
+    <Property Name="nu_stockmax" Type="float" Nullable="false" />
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MA_PROVEEDORES">
+    <Key>
+      <PropertyRef Name="c_codproveed" />
+      <PropertyRef Name="c_descripcio" />
+      <PropertyRef Name="c_rif" />
+      <PropertyRef Name="c_nit" />
+    </Key>
+    <Property Name="c_codproveed" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_descripcio" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_rif" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_representa" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="c_cargo" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="c_direccion" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="c_ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="c_estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="c_pais" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="c_email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_celular" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_fax" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_web" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="n_limite" Type="float" Nullable="false" />
+    <Property Name="n_dias" Type="int" Nullable="false" />
+    <Property Name="n_porcentaje" Type="float" Nullable="false" />
+    <Property Name="c_observacio" Type="ntext" Nullable="false" />
+    <Property Name="c_nit" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="n_activo" Type="int" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Nullable="false" />
+    <Property Name="add_date" Type="datetime" Nullable="false" />
+    <Property Name="c_razon" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_codreferencial" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_contacto_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_contacto_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_contacto_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_contacto_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_fiscal" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_depo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_rep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_celular_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_celular_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_celular_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_celular_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_direccion_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_ciudad_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_estado_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_pais_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_telefono_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_fax_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_email_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_cod_banco" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_cuenta_banco" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="c_cuentahabiente" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="n_dia2" Type="int" Nullable="false" />
+    <Property Name="n_porcentaje2" Type="float" Nullable="false" />
+    <Property Name="n_dia3" Type="int" Nullable="false" />
+    <Property Name="n_porcentaje3" Type="float" Nullable="false" />
+    <Property Name="c_codlicores" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="n_diasdespacho" Type="int" Nullable="false" />
+    <Property Name="B_PREFERENCIAL" Type="int" Nullable="false" />
+    <Property Name="N_RETENCION" Type="float" Nullable="false" />
+    <Property Name="CS_COMPRADOR" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="bu_cualquier_cuenta" Type="bit" Nullable="false" />
+    <Property Name="cs_tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_rim" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="n_diasreposicion" Type="int" Nullable="false" />
+    <Property Name="n_diasanalisis" Type="int" Nullable="false" />
+    <Property Name="n_descaveria" Type="int" Nullable="false" />
+    <Property Name="b_enviarOdcL" Type="bit" Nullable="false" />
+    <Property Name="b_enviarOdcA" Type="bit" Nullable="false" />
+    <Property Name="b_enviarOdcV" Type="bit" Nullable="false" />
+    <Property Name="b_enviarOdcR" Type="bit" Nullable="false" />
+    <Property Name="b_enviarOdcVen" Type="bit" Nullable="false" />
+    <Property Name="n_porcentaje_seniat" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TR_INVENTARIO">
+    <Key>
+      <PropertyRef Name="c_LINEA" />
+      <PropertyRef Name="c_CONCEPTO" />
+      <PropertyRef Name="c_DOCUMENTO" />
+      <PropertyRef Name="c_DEPOSITO" />
+      <PropertyRef Name="c_CODARTICULO" />
+      <PropertyRef Name="c_TIPOMOV" />
+      <PropertyRef Name="c_codlocalidad" />
+    </Key>
+    <Property Name="c_LINEA" Type="int" Nullable="false" />
+    <Property Name="c_CONCEPTO" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="c_DOCUMENTO" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="c_DEPOSITO" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_CODARTICULO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="n_CANTIDAD" Type="float" Nullable="false" />
+    <Property Name="n_COSTO" Type="float" Nullable="false" />
+    <Property Name="n_SUBTOTAL" Type="float" Nullable="false" />
+    <Property Name="n_IMPUESTO" Type="float" Nullable="false" />
+    <Property Name="n_TOTAL" Type="float" Nullable="false" />
+    <Property Name="c_TIPOMOV" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="n_cant_teorica" Type="float" Nullable="false" />
+    <Property Name="n_cant_diferencia" Type="float" Nullable="false" />
+    <Property Name="N_PRECIO" Type="float" Nullable="false" />
+    <Property Name="N_PRECIO_ORIGINAL" Type="float" Nullable="false" />
+    <Property Name="f_fecha" Type="datetime" Nullable="false" />
+    <Property Name="c_codlocalidad" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="n_factorcambio" Type="float" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_DESCRIPCION" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="C_COMPUESTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="codconcepto" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="n_descuentogeneral" Type="float" Nullable="false" />
+    <Property Name="n_descuentoespecifico" Type="float" Nullable="false" />
+    <Property Name="c_documento_origen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_tipodoc_origen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="N_CANTIDADFAC" Type="float" Nullable="false" />
+    <Property Name="ns_descuento" Type="float" Nullable="false" />
+    <Property Name="cs_comprobanteContable" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cs_codlocalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ns_CantidadEmpaque" Type="float" Nullable="false" />
+    <Property Name="IMPUESTO" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="VAD10ModelStoreContainer">
+    <EntitySet Name="MA_PRODUCTOS" EntityType="Self.MA_PRODUCTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MA_PROVEEDORES" EntityType="Self.MA_PROVEEDORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TR_INVENTARIO" EntityType="Self.TR_INVENTARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MA_INVENTARIO" EntityType="Self.MA_INVENTARIO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MA_INVENTARIO].[c_CONCEPTO] AS [c_CONCEPTO], 
+    [MA_INVENTARIO].[c_DOCUMENTO] AS [c_DOCUMENTO], 
+    [MA_INVENTARIO].[d_FECHA] AS [d_FECHA], 
+    [MA_INVENTARIO].[c_DESCRIPCION] AS [c_DESCRIPCION], 
+    [MA_INVENTARIO].[c_STATUS] AS [c_STATUS], 
+    [MA_INVENTARIO].[c_CODPROVEEDOR] AS [c_CODPROVEEDOR], 
+    [MA_INVENTARIO].[c_CODLOCALIDAD] AS [c_CODLOCALIDAD], 
+    [MA_INVENTARIO].[c_codmoneda] AS [c_codmoneda], 
+    [MA_INVENTARIO].[n_FACTORCAMBIO] AS [n_FACTORCAMBIO], 
+    [MA_INVENTARIO].[n_DESCUENTO] AS [n_DESCUENTO], 
+    [MA_INVENTARIO].[c_OBSERVACION] AS [c_OBSERVACION], 
+    [MA_INVENTARIO].[c_RELACION] AS [c_RELACION], 
+    [MA_INVENTARIO].[c_CODCOMPRADOR] AS [c_CODCOMPRADOR], 
+    [MA_INVENTARIO].[c_DEP_ORIG] AS [c_DEP_ORIG], 
+    [MA_INVENTARIO].[c_DEP_DEST] AS [c_DEP_DEST], 
+    [MA_INVENTARIO].[c_MOTIVO] AS [c_MOTIVO], 
+    [MA_INVENTARIO].[c_codtransporte] AS [c_codtransporte], 
+    [MA_INVENTARIO].[c_ejecutor] AS [c_ejecutor], 
+    [MA_INVENTARIO].[c_factura] AS [c_factura], 
+    [MA_INVENTARIO].[c_transportista] AS [c_transportista], 
+    [MA_INVENTARIO].[n_cantidad_compra] AS [n_cantidad_compra], 
+    [MA_INVENTARIO].[id] AS [id], 
+    [MA_INVENTARIO].[CODCONCEPTO] AS [CODCONCEPTO], 
+    [MA_INVENTARIO].[cs_comprobanteContable] AS [cs_comprobanteContable], 
+    [MA_INVENTARIO].[ds_horainicio] AS [ds_horainicio], 
+    [MA_INVENTARIO].[ds_horafinal] AS [ds_horafinal], 
+    [MA_INVENTARIO].[CS_CODLOCALIDAD] AS [CS_CODLOCALIDAD], 
+    [MA_INVENTARIO].[CS_NUMERO_TRANSFERENCIA] AS [CS_NUMERO_TRANSFERENCIA], 
+    [MA_INVENTARIO].[CS_CODUNIDAD] AS [CS_CODUNIDAD], 
+    [MA_INVENTARIO].[CS_NUMTRANSF_DESTINO] AS [CS_NUMTRANSF_DESTINO]
+    FROM [dbo].[MA_INVENTARIO] AS [MA_INVENTARIO]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

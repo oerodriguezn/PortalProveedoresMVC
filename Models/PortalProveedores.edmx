@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PortalProveedoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioOrdenesCompra' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="BioOrdenesCompra">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="FechaEmision" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="FechaRecepcion" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="FechaVencimiento" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Observacion" />
+          </Key>
+          <Property Name="Documento" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="FechaEmision" Type="datetime" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaRecepcion" Type="datetime" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="Impuesto" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="Tienda" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+          <Property Name="RIF" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Observacion" Type="ntext" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioOrdenesCompraDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="BioOrdenesCompraDetalle">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="CantidadRecibida" />
+            <PropertyRef Name="Linea" />
+            <PropertyRef Name="CodigoProducto" />
+            <PropertyRef Name="Presentacion" />
+            <PropertyRef Name="Kg" />
+            <PropertyRef Name="CantPresentacion" />
+          </Key>
+          <Property Name="Documento" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="RIF" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cantidad" Type="float" Nullable="false" />
+          <Property Name="Costo" Type="float" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="Impuesto" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="CantidadRecibida" Type="float" Nullable="false" />
+          <Property Name="Linea" Type="int" Nullable="false" />
+          <Property Name="CodigoProducto" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Presentacion" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Bultos" Type="int" />
+          <Property Name="Kg" Type="float" Nullable="false" />
+          <Property Name="UnidadesOdc" Type="float" />
+          <Property Name="CantPresentacion" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioProveedores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="BioProveedores">
+          <Key>
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Afiliado" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="BioMail" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="RIF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Afiliado" Type="int" Nullable="false" />
+          <Property Name="DDNId" Type="int" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BioMail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioRetencionFacturas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="BioRetencionFacturas">
+          <Key>
+            <PropertyRef Name="Factura" />
+            <PropertyRef Name="FechaEmision" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Retencion" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="MontoTotalFactura" />
+            <PropertyRef Name="BaseImponible" />
+            <PropertyRef Name="Concepto" />
+            <PropertyRef Name="TipoRetencion" />
+            <PropertyRef Name="MontoBase" />
+            <PropertyRef Name="Porcentaje" />
+            <PropertyRef Name="MontoRetencion" />
+            <PropertyRef Name="Correlativo" />
+            <PropertyRef Name="NoControl" />
+            <PropertyRef Name="CodRetencion" />
+            <PropertyRef Name="ConceptoRetencion" />
+          </Key>
+          <Property Name="Factura" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaEmision" Type="datetime" Nullable="false" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RIF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Retencion" Type="float" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="Impuesto" Type="float" Nullable="false" />
+          <Property Name="MontoTotalFactura" Type="float" Nullable="false" />
+          <Property Name="BaseImponible" Type="float" Nullable="false" />
+          <Property Name="Concepto" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TipoRetencion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MontoBase" Type="float" Nullable="false" />
+          <Property Name="Porcentaje" Type="float" Nullable="false" />
+          <Property Name="MontoRetencion" Type="float" Nullable="false" />
+          <Property Name="Correlativo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoControl" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodRetencion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ConceptoRetencion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Function Name="BioObtenerDetalleODC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="RIF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BioObtenerOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RIF" Type="varchar" Mode="In" />
+          <Parameter Name="FechaDesde" Type="datetime" Mode="In" />
+          <Parameter Name="FechaHasta" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="PortalProveedoresModelStoreContainer">
+          <EntitySet Name="BioOrdenesCompra" EntityType="Self.BioOrdenesCompra" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BioOrdenesCompra].[Documento] AS [Documento], 
+    [BioOrdenesCompra].[FechaEmision] AS [FechaEmision], 
+    [BioOrdenesCompra].[Estatus] AS [Estatus], 
+    [BioOrdenesCompra].[FechaRecepcion] AS [FechaRecepcion], 
+    [BioOrdenesCompra].[SubTotal] AS [SubTotal], 
+    [BioOrdenesCompra].[Impuesto] AS [Impuesto], 
+    [BioOrdenesCompra].[Total] AS [Total], 
+    [BioOrdenesCompra].[Tienda] AS [Tienda], 
+    [BioOrdenesCompra].[FechaVencimiento] AS [FechaVencimiento], 
+    [BioOrdenesCompra].[RIF] AS [RIF], 
+    [BioOrdenesCompra].[Observacion] AS [Observacion]
+    FROM [dbo].[BioOrdenesCompra] AS [BioOrdenesCompra]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BioOrdenesCompraDetalle" EntityType="Self.BioOrdenesCompraDetalle" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BioOrdenesCompraDetalle].[Documento] AS [Documento], 
+    [BioOrdenesCompraDetalle].[RIF] AS [RIF], 
+    [BioOrdenesCompraDetalle].[Producto] AS [Producto], 
+    [BioOrdenesCompraDetalle].[Cantidad] AS [Cantidad], 
+    [BioOrdenesCompraDetalle].[Costo] AS [Costo], 
+    [BioOrdenesCompraDetalle].[SubTotal] AS [SubTotal], 
+    [BioOrdenesCompraDetalle].[Impuesto] AS [Impuesto], 
+    [BioOrdenesCompraDetalle].[Total] AS [Total], 
+    [BioOrdenesCompraDetalle].[CantidadRecibida] AS [CantidadRecibida], 
+    [BioOrdenesCompraDetalle].[Linea] AS [Linea], 
+    [BioOrdenesCompraDetalle].[CodigoProducto] AS [CodigoProducto], 
+    [BioOrdenesCompraDetalle].[Presentacion] AS [Presentacion], 
+    [BioOrdenesCompraDetalle].[Bultos] AS [Bultos], 
+    [BioOrdenesCompraDetalle].[Kg] AS [Kg], 
+    [BioOrdenesCompraDetalle].[UnidadesOdc] AS [UnidadesOdc], 
+    [BioOrdenesCompraDetalle].[CantPresentacion] AS [CantPresentacion]
+    FROM [dbo].[BioOrdenesCompraDetalle] AS [BioOrdenesCompraDetalle]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BioProveedores" EntityType="Self.BioProveedores" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BioProveedores].[RIF] AS [RIF], 
+    [BioProveedores].[Proveedor] AS [Proveedor], 
+    [BioProveedores].[Tipo] AS [Tipo], 
+    [BioProveedores].[Afiliado] AS [Afiliado], 
+    [BioProveedores].[DDNId] AS [DDNId], 
+    [BioProveedores].[Direccion] AS [Direccion], 
+    [BioProveedores].[Ciudad] AS [Ciudad], 
+    [BioProveedores].[Estado] AS [Estado], 
+    [BioProveedores].[BioMail] AS [BioMail], 
+    [BioProveedores].[Telefono] AS [Telefono], 
+    [BioProveedores].[Codigo] AS [Codigo]
+    FROM [dbo].[BioProveedores] AS [BioProveedores]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BioRetencionFacturas" EntityType="Self.BioRetencionFacturas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BioRetencionFacturas].[Factura] AS [Factura], 
+    [BioRetencionFacturas].[FechaEmision] AS [FechaEmision], 
+    [BioRetencionFacturas].[Proveedor] AS [Proveedor], 
+    [BioRetencionFacturas].[RIF] AS [RIF], 
+    [BioRetencionFacturas].[Retencion] AS [Retencion], 
+    [BioRetencionFacturas].[SubTotal] AS [SubTotal], 
+    [BioRetencionFacturas].[Impuesto] AS [Impuesto], 
+    [BioRetencionFacturas].[MontoTotalFactura] AS [MontoTotalFactura], 
+    [BioRetencionFacturas].[BaseImponible] AS [BaseImponible], 
+    [BioRetencionFacturas].[Concepto] AS [Concepto], 
+    [BioRetencionFacturas].[TipoRetencion] AS [TipoRetencion], 
+    [BioRetencionFacturas].[MontoBase] AS [MontoBase], 
+    [BioRetencionFacturas].[Porcentaje] AS [Porcentaje], 
+    [BioRetencionFacturas].[MontoRetencion] AS [MontoRetencion], 
+    [BioRetencionFacturas].[Correlativo] AS [Correlativo], 
+    [BioRetencionFacturas].[NoControl] AS [NoControl], 
+    [BioRetencionFacturas].[CodRetencion] AS [CodRetencion], 
+    [BioRetencionFacturas].[ConceptoRetencion] AS [ConceptoRetencion]
+    FROM [dbo].[BioRetencionFacturas] AS [BioRetencionFacturas]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PortalProveedoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BioOrdenesCompra">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="FechaEmision" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="FechaRecepcion" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="FechaVencimiento" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Observacion" />
+          </Key>
+          <Property Name="Documento" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEmision" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="Impuesto" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Tienda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RIF" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Observacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BioOrdenesCompraDetalle">
+          <Key>
+            <PropertyRef Name="Documento" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Costo" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="CantidadRecibida" />
+            <PropertyRef Name="Linea" />
+            <PropertyRef Name="CodigoProducto" />
+            <PropertyRef Name="Presentacion" />
+            <PropertyRef Name="Kg" />
+            <PropertyRef Name="CantPresentacion" />
+          </Key>
+          <Property Name="Documento" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RIF" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Producto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad" Type="Double" Nullable="false" />
+          <Property Name="Costo" Type="Double" Nullable="false" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="Impuesto" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="CantidadRecibida" Type="Double" Nullable="false" />
+          <Property Name="Linea" Type="Int32" Nullable="false" />
+          <Property Name="CodigoProducto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Presentacion" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Bultos" Type="Int32" />
+          <Property Name="Kg" Type="Double" Nullable="false" />
+          <Property Name="UnidadesOdc" Type="Double" />
+          <Property Name="CantPresentacion" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BioProveedores">
+          <Key>
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Afiliado" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="BioMail" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="RIF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Afiliado" Type="Int32" Nullable="false" />
+          <Property Name="DDNId" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BioMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PortalProveedoresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BioOrdenesCompra" EntityType="Self.BioOrdenesCompra" />
+          <EntitySet Name="BioOrdenesCompraDetalle" EntityType="Self.BioOrdenesCompraDetalle" />
+          <EntitySet Name="BioProveedores" EntityType="Self.BioProveedores" />
+          <FunctionImport Name="BioObtenerDetalleODC" EntitySet="BioOrdenesCompraDetalle" ReturnType="Collection(PortalProveedoresModel.BioOrdenesCompraDetalle)">
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="RIF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BioObtenerOrdenesCompra" ReturnType="Collection(PortalProveedoresModel.BioObtenerOrdenesCompra_Result)">
+            <Parameter Name="RIF" Mode="In" Type="String" />
+            <Parameter Name="FechaDesde" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaHasta" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="BioRetencionFacturas" EntityType="PortalProveedoresModel.BioRetencionFacturas" />
+        </EntityContainer>
+        <ComplexType Name="BioObtenerDetalleODC_Result">
+          <Property Type="String" Name="Documento" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="RIF" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="255" />
+          <Property Type="Double" Name="Cantidad" Nullable="false" />
+          <Property Type="Double" Name="Costo" Nullable="false" />
+          <Property Type="Double" Name="SubTotal" Nullable="false" />
+          <Property Type="Double" Name="Impuesto" Nullable="false" />
+          <Property Type="Double" Name="Total" Nullable="false" />
+          <Property Type="Double" Name="CantidadRecibida" Nullable="false" />
+          <Property Type="Int32" Name="Linea" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="BioObtenerOrdenesCompra_Result">
+          <Property Type="String" Name="Documento" Nullable="false" MaxLength="9" />
+          <Property Type="DateTime" Name="FechaEmision" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Estatus" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="FechaRecepcion" Nullable="false" Precision="23" />
+          <Property Type="Double" Name="SubTotal" Nullable="false" />
+          <Property Type="Double" Name="Impuesto" Nullable="false" />
+          <Property Type="Double" Name="Total" Nullable="false" />
+          <Property Type="String" Name="Tienda" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" Precision="23" />
+          <Property Type="String" Name="RIF" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="BioRetencionFacturas">
+          <Key>
+            <PropertyRef Name="Factura" />
+            <PropertyRef Name="FechaEmision" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="RIF" />
+            <PropertyRef Name="Retencion" />
+            <PropertyRef Name="SubTotal" />
+            <PropertyRef Name="Impuesto" />
+            <PropertyRef Name="MontoTotalFactura" />
+            <PropertyRef Name="BaseImponible" />
+            <PropertyRef Name="Concepto" />
+            <PropertyRef Name="TipoRetencion" />
+            <PropertyRef Name="MontoBase" />
+            <PropertyRef Name="Porcentaje" />
+            <PropertyRef Name="MontoRetencion" />
+            <PropertyRef Name="Correlativo" />
+            <PropertyRef Name="NoControl" />
+            <PropertyRef Name="CodRetencion" />
+            <PropertyRef Name="ConceptoRetencion" />
+          </Key>
+          <Property Name="Factura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEmision" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RIF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Retencion" Type="Double" Nullable="false" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="Impuesto" Type="Double" Nullable="false" />
+          <Property Name="MontoTotalFactura" Type="Double" Nullable="false" />
+          <Property Name="BaseImponible" Type="Double" Nullable="false" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TipoRetencion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MontoBase" Type="Double" Nullable="false" />
+          <Property Name="Porcentaje" Type="Double" Nullable="false" />
+          <Property Name="MontoRetencion" Type="Double" Nullable="false" />
+          <Property Name="Correlativo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoControl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodRetencion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ConceptoRetencion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PortalProveedoresModelStoreContainer" CdmEntityContainer="PortalProveedoresEntities">
+          <EntitySetMapping Name="BioOrdenesCompra">
+            <EntityTypeMapping TypeName="PortalProveedoresModel.BioOrdenesCompra">
+              <MappingFragment StoreEntitySet="BioOrdenesCompra">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BioOrdenesCompraDetalle">
+            <EntityTypeMapping TypeName="PortalProveedoresModel.BioOrdenesCompraDetalle">
+              <MappingFragment StoreEntitySet="BioOrdenesCompraDetalle">
+                <ScalarProperty Name="CantPresentacion" ColumnName="CantPresentacion" />
+                <ScalarProperty Name="UnidadesOdc" ColumnName="UnidadesOdc" />
+                <ScalarProperty Name="Kg" ColumnName="Kg" />
+                <ScalarProperty Name="Bultos" ColumnName="Bultos" />
+                <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CantidadRecibida" ColumnName="CantidadRecibida" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BioProveedores">
+            <EntityTypeMapping TypeName="PortalProveedoresModel.BioProveedores">
+              <MappingFragment StoreEntitySet="BioProveedores">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
+                <ScalarProperty Name="DDNId" ColumnName="DDNId" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="BioMail" ColumnName="BioMail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BioObtenerDetalleODC" FunctionName="PortalProveedoresModel.Store.BioObtenerDetalleODC">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BioObtenerOrdenesCompra" FunctionName="PortalProveedoresModel.Store.BioObtenerOrdenesCompra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PortalProveedoresModel.BioObtenerOrdenesCompra_Result">
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="BioRetencionFacturas">
+            <EntityTypeMapping TypeName="PortalProveedoresModel.BioRetencionFacturas">
+              <MappingFragment StoreEntitySet="BioRetencionFacturas">
+                <ScalarProperty Name="ConceptoRetencion" ColumnName="ConceptoRetencion" />
+                <ScalarProperty Name="CodRetencion" ColumnName="CodRetencion" />
+                <ScalarProperty Name="NoControl" ColumnName="NoControl" />
+                <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+                <ScalarProperty Name="MontoRetencion" ColumnName="MontoRetencion" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="MontoBase" ColumnName="MontoBase" />
+                <ScalarProperty Name="TipoRetencion" ColumnName="TipoRetencion" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="BaseImponible" ColumnName="BaseImponible" />
+                <ScalarProperty Name="MontoTotalFactura" ColumnName="MontoTotalFactura" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Retencion" ColumnName="Retencion" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

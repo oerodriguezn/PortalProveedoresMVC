@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VAD10Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MA_PRODUCTOS">
+    <Key>
+      <PropertyRef Name="C_CODIGO" />
+    </Key>
+    <Property Name="C_CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_DESCRI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_departamento" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_grupo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_subgrupo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_marca" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_modelo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_procede" Type="Boolean" Nullable="false" />
+    <Property Name="n_costoact" Type="Double" Nullable="false" />
+    <Property Name="n_costoant" Type="Double" Nullable="false" />
+    <Property Name="n_costopro" Type="Double" Nullable="false" />
+    <Property Name="n_costorep" Type="Double" Nullable="false" />
+    <Property Name="n_precio1" Type="Double" Nullable="false" />
+    <Property Name="n_precio2" Type="Double" Nullable="false" />
+    <Property Name="n_precio3" Type="Double" Nullable="false" />
+    <Property Name="c_seriales" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_compuesto" Type="Int32" Nullable="false" />
+    <Property Name="c_presenta" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_peso" Type="Double" Nullable="false" />
+    <Property Name="n_volumen" Type="Double" Nullable="false" />
+    <Property Name="n_cantibul" Type="Double" Nullable="false" />
+    <Property Name="n_pesobul" Type="Double" Nullable="false" />
+    <Property Name="n_volbul" Type="Double" Nullable="false" />
+    <Property Name="c_fileimagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="n_impuesto1" Type="Double" Nullable="false" />
+    <Property Name="n_impuesto2" Type="Double" Nullable="false" />
+    <Property Name="n_impuesto3" Type="Double" Nullable="false" />
+    <Property Name="c_cod_arancel" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_des_arancel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_por_arancel" Type="Double" Nullable="false" />
+    <Property Name="n_costo_original" Type="Double" Nullable="false" />
+    <Property Name="c_observacio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_activo" Type="Int32" Nullable="false" />
+    <Property Name="n_tipopeso" Type="Int32" Nullable="false" />
+    <Property Name="n_precioO" Type="Double" Nullable="false" />
+    <Property Name="f_inicial" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="f_final" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="h_inicial" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="h_final" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="add_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="c_codfabricante" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HABLADOR" Type="Int32" Nullable="false" />
+    <Property Name="C_CODMONEDA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CANT_DECIMALES" Type="Int32" Nullable="false" />
+    <Property Name="MONEDA_ANT" Type="Double" Nullable="false" />
+    <Property Name="MONEDA_ACT" Type="Double" Nullable="false" />
+    <Property Name="MONEDA_PRO" Type="Double" Nullable="false" />
+    <Property Name="C_CODIGO_BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_DESCRI_BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEXT8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DATE1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NUME1" Type="Double" Nullable="false" />
+    <Property Name="N_CANTIDAD_TMP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_COD_PLANTILLA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_usuarioAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_usuarioupd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_PROD_EXT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_PRO_EXT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NU_TIPO_PRODUCTO" Type="Int32" Nullable="false" />
+    <Property Name="nu_insumointerno" Type="Int32" Nullable="false" />
+    <Property Name="nu_precioregulado" Type="Int32" Nullable="false" />
+    <Property Name="nu_pocentajemerma" Type="Double" Nullable="false" />
+    <Property Name="nu_nivelClave" Type="Int32" Nullable="false" />
+    <Property Name="CU_DESCRIPCION_CORTA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bs_permiteteclado" Type="Boolean" Nullable="false" />
+    <Property Name="bs_permitecantidad" Type="Boolean" Nullable="false" />
+    <Property Name="nu_stockmin" Type="Double" Nullable="false" />
+    <Property Name="nu_stockmax" Type="Double" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="MA_PROVEEDORES">
+    <Key>
+      <PropertyRef Name="c_codproveed" />
+      <PropertyRef Name="c_descripcio" />
+      <PropertyRef Name="c_rif" />
+      <PropertyRef Name="c_nit" />
+    </Key>
+    <Property Name="c_codproveed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_descripcio" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_rif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_representa" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_direccion" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_pais" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_limite" Type="Double" Nullable="false" />
+    <Property Name="n_dias" Type="Int32" Nullable="false" />
+    <Property Name="n_porcentaje" Type="Double" Nullable="false" />
+    <Property Name="c_observacio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_nit" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_activo" Type="Int32" Nullable="false" />
+    <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="add_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="c_razon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_codreferencial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_contacto_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_contacto_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_contacto_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_contacto_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_fiscal" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_depo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_rep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_celular_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_celular_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_celular_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_celular_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_direccion_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_ciudad_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_estado_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_pais_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_telefono_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_fax_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_email_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_cod_banco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_cuenta_banco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_cuentahabiente" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_dia2" Type="Int32" Nullable="false" />
+    <Property Name="n_porcentaje2" Type="Double" Nullable="false" />
+    <Property Name="n_dia3" Type="Int32" Nullable="false" />
+    <Property Name="n_porcentaje3" Type="Double" Nullable="false" />
+    <Property Name="c_codlicores" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_diasdespacho" Type="Int32" Nullable="false" />
+    <Property Name="B_PREFERENCIAL" Type="Int32" Nullable="false" />
+    <Property Name="N_RETENCION" Type="Double" Nullable="false" />
+    <Property Name="CS_COMPRADOR" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bu_cualquier_cuenta" Type="Boolean" Nullable="false" />
+    <Property Name="cs_tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_rim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_diasreposicion" Type="Int32" Nullable="false" />
+    <Property Name="n_diasanalisis" Type="Int32" Nullable="false" />
+    <Property Name="n_descaveria" Type="Int32" Nullable="false" />
+    <Property Name="b_enviarOdcL" Type="Boolean" Nullable="false" />
+    <Property Name="b_enviarOdcA" Type="Boolean" Nullable="false" />
+    <Property Name="b_enviarOdcV" Type="Boolean" Nullable="false" />
+    <Property Name="b_enviarOdcR" Type="Boolean" Nullable="false" />
+    <Property Name="b_enviarOdcVen" Type="Boolean" Nullable="false" />
+    <Property Name="n_porcentaje_seniat" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TR_INVENTARIO">
+    <Key>
+      <PropertyRef Name="c_LINEA" />
+      <PropertyRef Name="c_CONCEPTO" />
+      <PropertyRef Name="c_DOCUMENTO" />
+      <PropertyRef Name="c_DEPOSITO" />
+      <PropertyRef Name="c_CODARTICULO" />
+      <PropertyRef Name="c_TIPOMOV" />
+      <PropertyRef Name="c_codlocalidad" />
+    </Key>
+    <Property Name="c_LINEA" Type="Int32" Nullable="false" />
+    <Property Name="c_CONCEPTO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_DOCUMENTO" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_DEPOSITO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_CODARTICULO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_CANTIDAD" Type="Double" Nullable="false" />
+    <Property Name="n_COSTO" Type="Double" Nullable="false" />
+    <Property Name="n_SUBTOTAL" Type="Double" Nullable="false" />
+    <Property Name="n_IMPUESTO" Type="Double" Nullable="false" />
+    <Property Name="n_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="c_TIPOMOV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_cant_teorica" Type="Double" Nullable="false" />
+    <Property Name="n_cant_diferencia" Type="Double" Nullable="false" />
+    <Property Name="N_PRECIO" Type="Double" Nullable="false" />
+    <Property Name="N_PRECIO_ORIGINAL" Type="Double" Nullable="false" />
+    <Property Name="f_fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="c_codlocalidad" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_factorcambio" Type="Double" Nullable="false" />
+    <Property Name="id" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_DESCRIPCION" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_COMPUESTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="codconcepto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="n_descuentogeneral" Type="Double" Nullable="false" />
+    <Property Name="n_descuentoespecifico" Type="Double" Nullable="false" />
+    <Property Name="c_documento_origen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_tipodoc_origen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="N_CANTIDADFAC" Type="Double" Nullable="false" />
+    <Property Name="ns_descuento" Type="Double" Nullable="false" />
+    <Property Name="cs_comprobanteContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cs_codlocalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ns_CantidadEmpaque" Type="Double" Nullable="false" />
+    <Property Name="IMPUESTO" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MA_INVENTARIO">
+    <Key>
+      <PropertyRef Name="c_CONCEPTO" />
+      <PropertyRef Name="c_DOCUMENTO" />
+      <PropertyRef Name="d_FECHA" />
+      <PropertyRef Name="c_DESCRIPCION" />
+      <PropertyRef Name="c_STATUS" />
+      <PropertyRef Name="c_CODPROVEEDOR" />
+      <PropertyRef Name="c_CODLOCALIDAD" />
+      <PropertyRef Name="c_codmoneda" />
+      <PropertyRef Name="n_FACTORCAMBIO" />
+      <PropertyRef Name="n_DESCUENTO" />
+      <PropertyRef Name="c_OBSERVACION" />
+      <PropertyRef Name="c_RELACION" />
+      <PropertyRef Name="c_CODCOMPRADOR" />
+      <PropertyRef Name="c_DEP_ORIG" />
+      <PropertyRef Name="c_DEP_DEST" />
+      <PropertyRef Name="c_MOTIVO" />
+      <PropertyRef Name="c_codtransporte" />
+      <PropertyRef Name="c_ejecutor" />
+      <PropertyRef Name="c_factura" />
+      <PropertyRef Name="c_transportista" />
+      <PropertyRef Name="n_cantidad_compra" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="CODCONCEPTO" />
+      <PropertyRef Name="cs_comprobanteContable" />
+      <PropertyRef Name="ds_horainicio" />
+      <PropertyRef Name="ds_horafinal" />
+      <PropertyRef Name="CS_CODLOCALIDAD" />
+      <PropertyRef Name="CS_NUMERO_TRANSFERENCIA" />
+      <PropertyRef Name="CS_CODUNIDAD" />
+      <PropertyRef Name="CS_NUMTRANSF_DESTINO" />
+    </Key>
+    <Property Name="c_CONCEPTO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_DOCUMENTO" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="d_FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="c_DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_STATUS" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_CODPROVEEDOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_CODLOCALIDAD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_codmoneda" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_FACTORCAMBIO" Type="Double" Nullable="false" />
+    <Property Name="n_DESCUENTO" Type="Double" Nullable="false" />
+    <Property Name="c_OBSERVACION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_RELACION" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_CODCOMPRADOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_DEP_ORIG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_DEP_DEST" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_MOTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_codtransporte" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_ejecutor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_factura" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="c_transportista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="n_cantidad_compra" Type="Double" Nullable="false" />
+    <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODCONCEPTO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cs_comprobanteContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ds_horainicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ds_horafinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CS_CODLOCALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CS_NUMERO_TRANSFERENCIA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CS_CODUNIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CS_NUMTRANSF_DESTINO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BioMercadosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MA_PRODUCTOS" EntityType="Self.MA_PRODUCTOS" />
+    <EntitySet Name="MA_PROVEEDORES" EntityType="Self.MA_PROVEEDORES" />
+    <EntitySet Name="TR_INVENTARIO" EntityType="Self.TR_INVENTARIO" />
+    <EntitySet Name="MA_INVENTARIO" EntityType="Self.MA_INVENTARIO" />
+  </EntityContainer>
+</Schema>

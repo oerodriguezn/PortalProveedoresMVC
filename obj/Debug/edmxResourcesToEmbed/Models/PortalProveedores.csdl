@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PortalProveedoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BioOrdenesCompra">
+    <Key>
+      <PropertyRef Name="Documento" />
+      <PropertyRef Name="FechaEmision" />
+      <PropertyRef Name="Estatus" />
+      <PropertyRef Name="FechaRecepcion" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="FechaVencimiento" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Observacion" />
+    </Key>
+    <Property Name="Documento" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaEmision" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SubTotal" Type="Double" Nullable="false" />
+    <Property Name="Impuesto" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="Tienda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RIF" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Observacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BioOrdenesCompraDetalle">
+    <Key>
+      <PropertyRef Name="Documento" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Producto" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="CantidadRecibida" />
+      <PropertyRef Name="Linea" />
+      <PropertyRef Name="CodigoProducto" />
+      <PropertyRef Name="Presentacion" />
+      <PropertyRef Name="Kg" />
+      <PropertyRef Name="CantPresentacion" />
+    </Key>
+    <Property Name="Documento" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RIF" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Producto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="Double" Nullable="false" />
+    <Property Name="Costo" Type="Double" Nullable="false" />
+    <Property Name="SubTotal" Type="Double" Nullable="false" />
+    <Property Name="Impuesto" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="CantidadRecibida" Type="Double" Nullable="false" />
+    <Property Name="Linea" Type="Int32" Nullable="false" />
+    <Property Name="CodigoProducto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Presentacion" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Bultos" Type="Int32" />
+    <Property Name="Kg" Type="Double" Nullable="false" />
+    <Property Name="UnidadesOdc" Type="Double" />
+    <Property Name="CantPresentacion" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BioProveedores">
+    <Key>
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Proveedor" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="Afiliado" />
+      <PropertyRef Name="Direccion" />
+      <PropertyRef Name="Ciudad" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="BioMail" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="RIF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Afiliado" Type="Int32" Nullable="false" />
+    <Property Name="DDNId" Type="Int32" />
+    <Property Name="Direccion" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BioMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PortalProveedoresEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BioOrdenesCompra" EntityType="Self.BioOrdenesCompra" />
+    <EntitySet Name="BioOrdenesCompraDetalle" EntityType="Self.BioOrdenesCompraDetalle" />
+    <EntitySet Name="BioProveedores" EntityType="Self.BioProveedores" />
+    <FunctionImport Name="BioObtenerDetalleODC" EntitySet="BioOrdenesCompraDetalle" ReturnType="Collection(PortalProveedoresModel.BioOrdenesCompraDetalle)">
+      <Parameter Name="Documento" Mode="In" Type="String" />
+      <Parameter Name="RIF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BioObtenerOrdenesCompra" ReturnType="Collection(PortalProveedoresModel.BioObtenerOrdenesCompra_Result)">
+      <Parameter Name="RIF" Mode="In" Type="String" />
+      <Parameter Name="FechaDesde" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaHasta" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="BioRetencionFacturas" EntityType="PortalProveedoresModel.BioRetencionFacturas" />
+  </EntityContainer>
+  <ComplexType Name="BioObtenerDetalleODC_Result">
+    <Property Type="String" Name="Documento" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="RIF" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Producto" Nullable="false" MaxLength="255" />
+    <Property Type="Double" Name="Cantidad" Nullable="false" />
+    <Property Type="Double" Name="Costo" Nullable="false" />
+    <Property Type="Double" Name="SubTotal" Nullable="false" />
+    <Property Type="Double" Name="Impuesto" Nullable="false" />
+    <Property Type="Double" Name="Total" Nullable="false" />
+    <Property Type="Double" Name="CantidadRecibida" Nullable="false" />
+    <Property Type="Int32" Name="Linea" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="BioObtenerOrdenesCompra_Result">
+    <Property Type="String" Name="Documento" Nullable="false" MaxLength="9" />
+    <Property Type="DateTime" Name="FechaEmision" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Estatus" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="FechaRecepcion" Nullable="false" Precision="23" />
+    <Property Type="Double" Name="SubTotal" Nullable="false" />
+    <Property Type="Double" Name="Impuesto" Nullable="false" />
+    <Property Type="Double" Name="Total" Nullable="false" />
+    <Property Type="String" Name="Tienda" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" Precision="23" />
+    <Property Type="String" Name="RIF" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <EntityType Name="BioRetencionFacturas">
+    <Key>
+      <PropertyRef Name="Factura" />
+      <PropertyRef Name="FechaEmision" />
+      <PropertyRef Name="Proveedor" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Retencion" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="MontoTotalFactura" />
+      <PropertyRef Name="BaseImponible" />
+      <PropertyRef Name="Concepto" />
+      <PropertyRef Name="TipoRetencion" />
+      <PropertyRef Name="MontoBase" />
+      <PropertyRef Name="Porcentaje" />
+      <PropertyRef Name="MontoRetencion" />
+      <PropertyRef Name="Correlativo" />
+      <PropertyRef Name="NoControl" />
+      <PropertyRef Name="CodRetencion" />
+      <PropertyRef Name="ConceptoRetencion" />
+    </Key>
+    <Property Name="Factura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaEmision" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RIF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Retencion" Type="Double" Nullable="false" />
+    <Property Name="SubTotal" Type="Double" Nullable="false" />
+    <Property Name="Impuesto" Type="Double" Nullable="false" />
+    <Property Name="MontoTotalFactura" Type="Double" Nullable="false" />
+    <Property Name="BaseImponible" Type="Double" Nullable="false" />
+    <Property Name="Concepto" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TipoRetencion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MontoBase" Type="Double" Nullable="false" />
+    <Property Name="Porcentaje" Type="Double" Nullable="false" />
+    <Property Name="MontoRetencion" Type="Double" Nullable="false" />
+    <Property Name="Correlativo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoControl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CodRetencion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ConceptoRetencion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

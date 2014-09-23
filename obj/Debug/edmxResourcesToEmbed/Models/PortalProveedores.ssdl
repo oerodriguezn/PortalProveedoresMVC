@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PortalProveedoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioOrdenesCompra' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BioOrdenesCompra">
+    <Key>
+      <PropertyRef Name="Documento" />
+      <PropertyRef Name="FechaEmision" />
+      <PropertyRef Name="Estatus" />
+      <PropertyRef Name="FechaRecepcion" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="FechaVencimiento" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Observacion" />
+    </Key>
+    <Property Name="Documento" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="FechaEmision" Type="datetime" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FechaRecepcion" Type="datetime" Nullable="false" />
+    <Property Name="SubTotal" Type="float" Nullable="false" />
+    <Property Name="Impuesto" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="Tienda" Type="nvarchar" MaxLength="50" />
+    <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+    <Property Name="RIF" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Observacion" Type="ntext" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioOrdenesCompraDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BioOrdenesCompraDetalle">
+    <Key>
+      <PropertyRef Name="Documento" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Producto" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="CantidadRecibida" />
+      <PropertyRef Name="Linea" />
+      <PropertyRef Name="CodigoProducto" />
+      <PropertyRef Name="Presentacion" />
+      <PropertyRef Name="Kg" />
+      <PropertyRef Name="CantPresentacion" />
+    </Key>
+    <Property Name="Documento" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="RIF" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Producto" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cantidad" Type="float" Nullable="false" />
+    <Property Name="Costo" Type="float" Nullable="false" />
+    <Property Name="SubTotal" Type="float" Nullable="false" />
+    <Property Name="Impuesto" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="CantidadRecibida" Type="float" Nullable="false" />
+    <Property Name="Linea" Type="int" Nullable="false" />
+    <Property Name="CodigoProducto" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Presentacion" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="Bultos" Type="int" />
+    <Property Name="Kg" Type="float" Nullable="false" />
+    <Property Name="UnidadesOdc" Type="float" />
+    <Property Name="CantPresentacion" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioProveedores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BioProveedores">
+    <Key>
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Proveedor" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="Afiliado" />
+      <PropertyRef Name="Direccion" />
+      <PropertyRef Name="Ciudad" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="BioMail" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="RIF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Proveedor" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Afiliado" Type="int" Nullable="false" />
+    <Property Name="DDNId" Type="int" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BioMail" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PortalProveedores.dbo.BioRetencionFacturas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BioRetencionFacturas">
+    <Key>
+      <PropertyRef Name="Factura" />
+      <PropertyRef Name="FechaEmision" />
+      <PropertyRef Name="Proveedor" />
+      <PropertyRef Name="RIF" />
+      <PropertyRef Name="Retencion" />
+      <PropertyRef Name="SubTotal" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="MontoTotalFactura" />
+      <PropertyRef Name="BaseImponible" />
+      <PropertyRef Name="Concepto" />
+      <PropertyRef Name="TipoRetencion" />
+      <PropertyRef Name="MontoBase" />
+      <PropertyRef Name="Porcentaje" />
+      <PropertyRef Name="MontoRetencion" />
+      <PropertyRef Name="Correlativo" />
+      <PropertyRef Name="NoControl" />
+      <PropertyRef Name="CodRetencion" />
+      <PropertyRef Name="ConceptoRetencion" />
+    </Key>
+    <Property Name="Factura" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaEmision" Type="datetime" Nullable="false" />
+    <Property Name="Proveedor" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RIF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Retencion" Type="float" Nullable="false" />
+    <Property Name="SubTotal" Type="float" Nullable="false" />
+    <Property Name="Impuesto" Type="float" Nullable="false" />
+    <Property Name="MontoTotalFactura" Type="float" Nullable="false" />
+    <Property Name="BaseImponible" Type="float" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TipoRetencion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MontoBase" Type="float" Nullable="false" />
+    <Property Name="Porcentaje" Type="float" Nullable="false" />
+    <Property Name="MontoRetencion" Type="float" Nullable="false" />
+    <Property Name="Correlativo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoControl" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CodRetencion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ConceptoRetencion" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Function Name="BioObtenerDetalleODC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="RIF" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="BioObtenerOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RIF" Type="varchar" Mode="In" />
+    <Parameter Name="FechaDesde" Type="datetime" Mode="In" />
+    <Parameter Name="FechaHasta" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="PortalProveedoresModelStoreContainer">
+    <EntitySet Name="BioOrdenesCompra" EntityType="Self.BioOrdenesCompra" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BioOrdenesCompra].[Documento] AS [Documento], 
+    [BioOrdenesCompra].[FechaEmision] AS [FechaEmision], 
+    [BioOrdenesCompra].[Estatus] AS [Estatus], 
+    [BioOrdenesCompra].[FechaRecepcion] AS [FechaRecepcion], 
+    [BioOrdenesCompra].[SubTotal] AS [SubTotal], 
+    [BioOrdenesCompra].[Impuesto] AS [Impuesto], 
+    [BioOrdenesCompra].[Total] AS [Total], 
+    [BioOrdenesCompra].[Tienda] AS [Tienda], 
+    [BioOrdenesCompra].[FechaVencimiento] AS [FechaVencimiento], 
+    [BioOrdenesCompra].[RIF] AS [RIF], 
+    [BioOrdenesCompra].[Observacion] AS [Observacion]
+    FROM [dbo].[BioOrdenesCompra] AS [BioOrdenesCompra]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BioOrdenesCompraDetalle" EntityType="Self.BioOrdenesCompraDetalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BioOrdenesCompraDetalle].[Documento] AS [Documento], 
+    [BioOrdenesCompraDetalle].[RIF] AS [RIF], 
+    [BioOrdenesCompraDetalle].[Producto] AS [Producto], 
+    [BioOrdenesCompraDetalle].[Cantidad] AS [Cantidad], 
+    [BioOrdenesCompraDetalle].[Costo] AS [Costo], 
+    [BioOrdenesCompraDetalle].[SubTotal] AS [SubTotal], 
+    [BioOrdenesCompraDetalle].[Impuesto] AS [Impuesto], 
+    [BioOrdenesCompraDetalle].[Total] AS [Total], 
+    [BioOrdenesCompraDetalle].[CantidadRecibida] AS [CantidadRecibida], 
+    [BioOrdenesCompraDetalle].[Linea] AS [Linea], 
+    [BioOrdenesCompraDetalle].[CodigoProducto] AS [CodigoProducto], 
+    [BioOrdenesCompraDetalle].[Presentacion] AS [Presentacion], 
+    [BioOrdenesCompraDetalle].[Bultos] AS [Bultos], 
+    [BioOrdenesCompraDetalle].[Kg] AS [Kg], 
+    [BioOrdenesCompraDetalle].[UnidadesOdc] AS [UnidadesOdc], 
+    [BioOrdenesCompraDetalle].[CantPresentacion] AS [CantPresentacion]
+    FROM [dbo].[BioOrdenesCompraDetalle] AS [BioOrdenesCompraDetalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BioProveedores" EntityType="Self.BioProveedores" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BioProveedores].[RIF] AS [RIF], 
+    [BioProveedores].[Proveedor] AS [Proveedor], 
+    [BioProveedores].[Tipo] AS [Tipo], 
+    [BioProveedores].[Afiliado] AS [Afiliado], 
+    [BioProveedores].[DDNId] AS [DDNId], 
+    [BioProveedores].[Direccion] AS [Direccion], 
+    [BioProveedores].[Ciudad] AS [Ciudad], 
+    [BioProveedores].[Estado] AS [Estado], 
+    [BioProveedores].[BioMail] AS [BioMail], 
+    [BioProveedores].[Telefono] AS [Telefono], 
+    [BioProveedores].[Codigo] AS [Codigo]
+    FROM [dbo].[BioProveedores] AS [BioProveedores]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BioRetencionFacturas" EntityType="Self.BioRetencionFacturas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BioRetencionFacturas].[Factura] AS [Factura], 
+    [BioRetencionFacturas].[FechaEmision] AS [FechaEmision], 
+    [BioRetencionFacturas].[Proveedor] AS [Proveedor], 
+    [BioRetencionFacturas].[RIF] AS [RIF], 
+    [BioRetencionFacturas].[Retencion] AS [Retencion], 
+    [BioRetencionFacturas].[SubTotal] AS [SubTotal], 
+    [BioRetencionFacturas].[Impuesto] AS [Impuesto], 
+    [BioRetencionFacturas].[MontoTotalFactura] AS [MontoTotalFactura], 
+    [BioRetencionFacturas].[BaseImponible] AS [BaseImponible], 
+    [BioRetencionFacturas].[Concepto] AS [Concepto], 
+    [BioRetencionFacturas].[TipoRetencion] AS [TipoRetencion], 
+    [BioRetencionFacturas].[MontoBase] AS [MontoBase], 
+    [BioRetencionFacturas].[Porcentaje] AS [Porcentaje], 
+    [BioRetencionFacturas].[MontoRetencion] AS [MontoRetencion], 
+    [BioRetencionFacturas].[Correlativo] AS [Correlativo], 
+    [BioRetencionFacturas].[NoControl] AS [NoControl], 
+    [BioRetencionFacturas].[CodRetencion] AS [CodRetencion], 
+    [BioRetencionFacturas].[ConceptoRetencion] AS [ConceptoRetencion]
+    FROM [dbo].[BioRetencionFacturas] AS [BioRetencionFacturas]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

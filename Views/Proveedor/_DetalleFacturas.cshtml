@@ -1,0 +1,94 @@
+@using System.Configuration
+@using System.Data.SqlClient
+@{
+var connectionString = ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString;
+       var con = new SqlConnection(connectionString);
+       con.Open();
+       var command = new SqlCommand("BioObtenerDetalleFacturas", con);
+       command.CommandType = System.Data.CommandType.StoredProcedure;
+       command.Parameters.Add("@RIF", Request["RIF"]);
+       command.Parameters.Add("@Factura", Request["Factura"]);
+     
+       SqlDataReader myReader = command.ExecuteReader();
+
+       }
+ <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="~/Content/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/css/dataTables.tableTools.css">
+<script type=" text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/Scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="~/Scripts/DataTables/dataTables.tableTools.js"></script>
+
+<br></br>
+    <table id="Facturas" class="display compact" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Cantidad Empaque</th>
+            <th>Costo</th>
+            <th>SubTotal</th>
+            <th>Impuesto</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Cantidad Empaque</th>
+            <th>Costo</th>
+            <th>SubTotal</th>
+            <th>Impuesto</th>
+            <th>Total</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @while (myReader.Read())
+        {
+            <tr>
+                <td align="center">@myReader["Producto"].ToString()</td>
+                <td align="right">@Convert.ToDecimal(myReader["Cantidad"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["CantidadEmpaque"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Costo"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["SubTotal"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Impuesto"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Total"]).ToString("N2")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+    @{
+        con.Close();
+    }
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#Facturas').dataTable(
+
+                {
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "@Request.ApplicationPath/Scripts/DataTables/copy_csv_xls_pdf.swf"
+                    },
+                     "language": {
+                         "url": "@Request.ApplicationPath/Scripts/DataTables/Spanish.json"
+            }
+                });
+
+
+        });
+    </script>
+
+
+
+
+
+

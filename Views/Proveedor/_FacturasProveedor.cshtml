@@ -1,0 +1,135 @@
+@using System.Configuration
+@using System.Data.SqlClient
+@{
+var connectionString = ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString;
+       var con = new SqlConnection(connectionString);
+       con.Open();
+       var command = new SqlCommand("BioObtenerFacturasProveedor", con);
+       command.CommandType = System.Data.CommandType.StoredProcedure;
+        if (Session["BioRIFproveedor"] != null)
+        {
+            command.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+        }
+       command.Parameters.Add("@IdUsuario", Session["BioUserID"].ToString());
+       DateTime Hace2Meses = DateTime.Now.AddMonths(-2);
+       DateTime FechaDesde = new DateTime(Hace2Meses.Year, Hace2Meses.Month, 1);
+       DateTime FechaHasta = DateTime.Now.AddDays(1);
+       if(Request["FechaDesde"] != null && Request["FechaHasta"]!= null )
+       {
+           if(Request["FechaDesde"].IndexOf('/') > 0 && Request["FechaDesde"].Length == 10 && Request["FechaDesde"].Split('/').Count() == 3  && Request["FechaHasta"].IndexOf('/') > 0 && Request["FechaHasta"].Length == 10 && Request["FechaHasta"].Split('/').Count() == 3 )
+           {
+               try{
+           FechaDesde = new DateTime(int.Parse(Request["FechaDesde"].Split('/')[2]), int.Parse(Request["FechaDesde"].Split('/')[1]), int.Parse(Request["FechaDesde"].Split('/')[0]));
+           FechaHasta = new DateTime(int.Parse(Request["FechaHasta"].Split('/')[2]), int.Parse(Request["FechaHasta"].Split('/')[1]), int.Parse(Request["FechaHasta"].Split('/')[0]));
+               } catch{}
+           }
+           Session["FechaDesde"] = FechaDesde;
+           Session["FechaHasta"] = FechaHasta;
+            
+       }else
+         {
+            if(Session["FechaDesde"] !=null && Session["FechaHasta"]!=null)
+            {
+                FechaDesde = (DateTime)Session["FechaDesde"];
+                FechaHasta = (DateTime)Session["FechaHasta"];
+            }
+         }
+      
+       command.Parameters.Add("@FechaDesde", FechaDesde);
+       command.Parameters.Add("@FechaHasta", FechaHasta);
+       SqlDataReader myReader = command.ExecuteReader();
+
+       }
+ <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="http://datatables.net/release-datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.1/themes/overcast/jquery-ui.css">
+<!-- jQuery -->
+<script type=" text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript" language="javascript" src="~/Scripts/jquery.ui.datepicker-es.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://datatables.net/release-datatables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+
+
+
+    <form id="FormSeleccionaProveedor" method="post" action="">
+        Rango de fechas a consultar: Desde: <input id="FechaDesde" name="FechaDesde" type="text" value="@FechaDesde.ToString("dd/MM/yyyy")" /> Hasta: <input id="FechaHasta" name="FechaHasta" type="text" value="@FechaHasta.ToString("dd/MM/yyyy")" />
+        <input type="submit" value="Actualizar" name="Actualizar" />
+    </form>
+
+    <script>
+        $(function () {
+            $("#FechaDesde").datepicker();
+            $("#FechaHasta").datepicker();
+
+        });
+    </script>
+    <table id="Facturas" class="display compact" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Factura</th>
+            <th>FechaEmision</th>
+            <th>Retencion</th>
+            <th>SubTotal</th>
+            <th>Impuesto</th>
+            <th>Total Factura</th>
+            <th>Estatus</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Factura</th>
+            <th>FechaEmision</th>
+            <th>Retencion</th>
+            <th>SubTotal</th>
+            <th>Impuesto</th>
+            <th>Total Factura</th>
+            <th>Estatus</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @while (myReader.Read())
+        {
+            <tr>
+                <td align="center">@myReader["Factura"].ToString()</td>
+                <td align="center">@Convert.ToDateTime(myReader["FechaEmision"]).ToString("dd/MM/yyyy")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Retencion"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["SubTotal"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Impuesto"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["MontoTotalFactura"]).ToString("N2")</td>
+                <td align="center">@myReader["Estatus"].ToString()</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+    @{
+        con.Close();
+    }
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#Facturas').dataTable(
+
+                {
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "http://datatables.net/release-datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+                    },
+                     "language": {
+                         "url": "//cdn.datatables.net/plug-ins/725b2a2115b/i18n/Spanish.json"
+            }
+                });
+
+
+        });
+    </script>
+
+
+

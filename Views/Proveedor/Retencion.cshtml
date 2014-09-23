@@ -1,0 +1,305 @@
+@using PortalProveedoresMVC.Models;
+@{
+    Layout = null;
+    BioRetencionFacturas Retencion = (BioRetencionFacturas)ViewBag.Retencion;
+    BioProveedores Proveedor = (BioProveedores)ViewBag.Proveedor;
+    }
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Orden de Compra</title>
+   
+</head>
+<body>
+    <div>
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td style="width: 48%" align="center">
+                    <img src="~/Content/Images/LogoODC.png" /><br />
+                    <b>ALIMENTOS FM, C.A.</b>
+                </td>
+                <td>
+                </td>
+                <td style="width: 48%" align="center">
+                    <b>COMPROBANTE DE @Retencion.ConceptoRetencion</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 48%" align="center">
+                    Rif: J-31721968-6
+                </td>
+                <td>
+                </td>
+                <td style="width: 48%" align="center">
+                    <table width="80%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="left">
+                                No Comprobante
+                            </td>
+                            <td align="right">
+                                Fecha de Emisión:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <b>@Retencion.Correlativo</b>
+                            </td>
+                            <td align="right">
+                                <b>@Retencion.FechaEmision.ToString("dd/MM/yyyy")</b>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 48%" align="center">
+                    AV. 96, EDIF. TORRE BOD, PISO 15, LOCAL 8, URB. SAN<br />
+                    JOSE DE TARBES.
+                </td>
+                <td>
+                </td>
+                <td style="width: 48%" align="center">
+                    PERIODO FISCAL<br />
+                    <b>AÑO: @Retencion.FechaEmision.Year/ MES: @Retencion.FechaEmision.ToString("MMMM",System.Globalization.CultureInfo.CreateSpecificCulture("ES-ve"))</b>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table width="80%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="left" style="width: 25%">
+                    <b>NOMBRE/RAZON SOCIAL</b>
+                </td>
+                <td align="left" style="width: 2%">
+                </td>
+                <td align="left">
+                    @Proveedor.Proveedor
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%">
+                    <b>R.I.F. / N.I.T.</b>
+                </td>
+                <td align="left" style="width: 2%">
+                </td>
+                <td align="left">
+                    @Proveedor.Codigo
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%">
+                    <b>TELEFONOS</b>
+                </td>
+                <td align="left" style="width: 2%">
+                </td>
+                <td align="left">
+                    @Proveedor.Telefono
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%" colspan="3">
+                    Hemos retenido la cantidad de:
+                </td>
+               
+            </tr>
+            <tr>
+                <td align="left" colspan="3">
+                    &nbsp; @ViewBag.MontoLetras
+                </td>
+               
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%">
+                    Aplicado a los documentos:
+                </td>
+                <td align="left" style="width: 2%">
+                </td>
+                <td align="left">
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td style="vertical-align: bottom ; height:30px">
+                    <p style="text-align: center; font-size: smaller; ">
+                        <b>FECHA FACTURA</b></p>
+                </td>
+                <td style="vertical-align: bottom ;">
+                    <p style="text-align: center; font-size: smaller; ">
+                        <b>N° FACTURA</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        <b>N° CONTROL</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        <b>N° DE NC/ND</b></p>
+                </td>
+                <td style="vertical-align: bottom ;">
+                    <p style="text-align: center; font-size: smaller;">
+                        <b>FAC. AFECTA</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller;">
+                        <b>DETALLE</b></p>
+                </td>
+                <td style="vertical-align: bottom ;">
+                    <p style="text-align: center; font-size: smaller;">
+                        <b>TOTAL CON IVA</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        <b>EXCENTO</b></p>
+                </td>
+                <td style="vertical-align: bottom" >
+                    <p style="text-align: center; font-size: smaller">
+                        <b>BASE IMPUESTO</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        <b>IMPUESTO</b></p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        BASE RET.%RET</p>
+                </td>
+                <td style="vertical-align: bottom">
+                    <p style="text-align: center; font-size: smaller">
+                        RETENIDO</p>
+                </td>
+            </tr>
+            <tr><td colspan="12" style=" border-top:double 3px black; height:5px"></td></tr>
+            <tr>
+                <td>
+                    <p style="text-align: center; font-size: smaller;">
+                        @Retencion.FechaEmision.ToString("dd/MM/yyyy")</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        @Retencion.Factura</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        @Retencion.NoControl</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        &nbsp;</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        &nbsp;</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                       @Retencion.Concepto</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        @Retencion.MontoTotalFactura</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        0,00</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                        @Retencion.BaseImponible</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                       @Retencion.Impuesto</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                       @Retencion.BaseImponible  - @Retencion.Porcentaje%</p>
+                </td>
+                <td>
+                    <p style="text-align: center; font-size: smaller">
+                       @Retencion.Retencion.ToString("N2")</p>
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="7" align="right" style="font-size: smaller">
+                    <b>TOTALES:</b>
+                </td>
+                <td align="center" style="font-size: smaller">
+                    -
+                </td>
+                <td align="center" style="font-size: smaller">
+                    @Retencion.BaseImponible</td>
+                <td align="center" style="font-size: smaller">
+                    @Retencion.Impuesto</td>
+                <td align="center" style="font-size: smaller">
+                    @Retencion.BaseImponible</td>
+                <td align="center" style="font-size: smaller">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" align="right" style="font-size: smaller;vertical-align:bottom">
+                    <b>AGENTE DE RETENCION:</b>
+                </td>
+                <td align="center">
+                </td>
+                <td align="center">
+                </td>
+                <td align="center" style="font-size: smaller">
+                    <b>TOTAL</b>
+                </td>
+                <td align="center" style="font-size: smaller">
+                </td>
+                 <td align="center" style="font-size: smaller">@Retencion.Retencion.ToString("N2")
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+        <table width="80%" cellspacing="0" cellpadding="0" style="margin-left: 0px">
+            <tr>
+                <td style="vertical-align:baseline">
+                    <b>RECIBO CONFORME</b>
+                </td>
+                <td style="width: 20%; vertical-align: baseline; border-bottom:3px solid black;" >                   
+                </td>
+                <td style="width: 25%;">
+                </td>
+                <td style="width: 25%;" align="left">
+                </td>
+                <td style="width: 15%">
+                </td>
+            </tr>
+           <tr><td colspan="5"><br /><br /></td></tr>
+            <tr>
+                <td style="width: 16%; vertical-align: bottom">
+                    <b>FECHA DE ENTREGA</b>
+                </td>
+                <td style="width: 20%; vertical-align: bottom; border-bottom: 3px solid black">
+                </td>
+                <td style="width: 25%;">
+                </td>
+                <td style="width: 25%;" align="left">
+                </td>
+                <td style="width: 15%">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 16%; vertical-align: bottom">
+                </td>
+                <td style="width: 20%; vertical-align: bottom">
+                   
+                </td>
+                <td style="width: 25%;">
+                </td>
+                <td align="center" style="vertical-align:top; border-top:3px solid black">
+                   
+                    <b>SELLO/FIRMA:</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

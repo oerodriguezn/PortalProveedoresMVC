@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PortalProveedoresModelStoreContainer" CdmEntityContainer="PortalProveedoresEntities">
+    <EntitySetMapping Name="BioOrdenesCompra">
+      <EntityTypeMapping TypeName="PortalProveedoresModel.BioOrdenesCompra">
+        <MappingFragment StoreEntitySet="BioOrdenesCompra">
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="RIF" ColumnName="RIF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BioOrdenesCompraDetalle">
+      <EntityTypeMapping TypeName="PortalProveedoresModel.BioOrdenesCompraDetalle">
+        <MappingFragment StoreEntitySet="BioOrdenesCompraDetalle">
+          <ScalarProperty Name="CantPresentacion" ColumnName="CantPresentacion" />
+          <ScalarProperty Name="UnidadesOdc" ColumnName="UnidadesOdc" />
+          <ScalarProperty Name="Kg" ColumnName="Kg" />
+          <ScalarProperty Name="Bultos" ColumnName="Bultos" />
+          <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="RIF" ColumnName="RIF" />
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="CantidadRecibida" ColumnName="CantidadRecibida" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BioProveedores">
+      <EntityTypeMapping TypeName="PortalProveedoresModel.BioProveedores">
+        <MappingFragment StoreEntitySet="BioProveedores">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="RIF" ColumnName="RIF" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
+          <ScalarProperty Name="DDNId" ColumnName="DDNId" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="BioMail" ColumnName="BioMail" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BioObtenerDetalleODC" FunctionName="PortalProveedoresModel.Store.BioObtenerDetalleODC" />
+    <FunctionImportMapping FunctionImportName="BioObtenerOrdenesCompra" FunctionName="PortalProveedoresModel.Store.BioObtenerOrdenesCompra">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PortalProveedoresModel.BioObtenerOrdenesCompra_Result">
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="RIF" ColumnName="RIF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BioRetencionFacturas">
+      <EntityTypeMapping TypeName="PortalProveedoresModel.BioRetencionFacturas">
+        <MappingFragment StoreEntitySet="BioRetencionFacturas">
+          <ScalarProperty Name="ConceptoRetencion" ColumnName="ConceptoRetencion" />
+          <ScalarProperty Name="CodRetencion" ColumnName="CodRetencion" />
+          <ScalarProperty Name="NoControl" ColumnName="NoControl" />
+          <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+          <ScalarProperty Name="MontoRetencion" ColumnName="MontoRetencion" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="MontoBase" ColumnName="MontoBase" />
+          <ScalarProperty Name="TipoRetencion" ColumnName="TipoRetencion" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="BaseImponible" ColumnName="BaseImponible" />
+          <ScalarProperty Name="MontoTotalFactura" ColumnName="MontoTotalFactura" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Retencion" ColumnName="Retencion" />
+          <ScalarProperty Name="RIF" ColumnName="RIF" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="Factura" ColumnName="Factura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

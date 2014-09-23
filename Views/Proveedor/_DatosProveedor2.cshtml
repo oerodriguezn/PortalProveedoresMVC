@@ -1,0 +1,125 @@
+@using System.Configuration
+@using System.Data.SqlClient
+@{
+         //   Session["BioUserID"] = Dnn.User.UserID;
+    Session["BioUserID"] = 2;
+    List<SelectListItem> ListadoProveedores = new List<SelectListItem>();
+    string Nombre = "";
+    string RIF = "";
+    
+    var connectionString = ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString;
+    }
+@{
+    if(Session["BioVeProveedores"]  == null)
+    {
+        var con2 = new SqlConnection(connectionString);
+        con2.Open();
+        try
+        {
+            var command2 = new SqlCommand("BioValidaRolVerProveedores", con2);
+            command2.Parameters.Add("@IdUsuario", Session["BioUserID"].ToString());
+            command2.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader myReader2 = command2.ExecuteReader();
+            bool VeProveedores = false;
+             while (myReader2.Read())
+             {
+                 VeProveedores = true;
+             }
+            Session["BioVeProveedores"] = VeProveedores;
+            
+        }
+        finally
+        {
+            con2.Close();
+        }
+        
+    }
+    }
+@{  
+    if(Session["BioVeProveedores"]!=null && bool.Parse(Session["BioVeProveedores"].ToString()))
+    {
+        var con2 = new SqlConnection(connectionString);
+        con2.Open();
+     
+            string RIFseleccionado = "";
+            if (Request["BioDDLProveedor"] != null)
+            {
+                RIFseleccionado = Request.Form["BioDDLProveedor"];
+                Session["BioRIFproveedor"] = RIFseleccionado;
+                RIF = RIFseleccionado;
+            }
+            var command2 = new SqlCommand("BioListadoProveedores", con2);
+            command2.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader myReader2 = command2.ExecuteReader();
+
+            while (myReader2.Read())
+            {
+                string RIFItem = myReader2["rif"].ToString();
+                if (Session["BioRIFproveedor"] == null)
+                {
+                    Session["BioRIFproveedor"] = RIFseleccionado = RIFItem;
+                    
+                }
+                if (RIFseleccionado == RIFItem)
+                {
+                    ListadoProveedores.Add(new SelectListItem { Text = myReader2["Nombre"].ToString(), Value = RIFItem, Selected = true });
+                  
+                }
+                else
+                {
+                    ListadoProveedores.Add(new SelectListItem { Text = myReader2["Nombre"].ToString(), Value = RIFItem, Selected = false });
+                }
+
+            }
+       
+            con2.Close();
+    }
+    
+        }
+  
+    
+@{
+    var con = new SqlConnection(connectionString);
+    con.Open();
+    var command = new SqlCommand("BioObtenerDatosEmpresa", con);
+    if(ListadoProveedores.Count >0)
+    {
+        command.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+        command.Parameters.Add("@IdUsuario", Session["BioUserID"].ToString());
+    }
+    else
+    {
+        command.Parameters.Add("@IdUsuario", Session["BioUserID"].ToString());
+    }
+        
+    command.CommandType = System.Data.CommandType.StoredProcedure;
+    SqlDataReader myReader = command.ExecuteReader();
+
+while (myReader.Read())
+             {
+                    Nombre = myReader["Proveedor"].ToString();
+                RIF = myReader["RIF"].ToString();
+             }
+con.Close();
+    }
+    
+    
+
+
+<divclass="sc-element">
+    @if(ListadoProveedores.Count >0)
+    {
+        <form id="FormSeleccionaProveedor" method="post">
+        <!-- Seleccione el proveedor: @Html.DropDownList("BioDDLProveedor",ListadoProveedores, new { onchange = "document.getElementById('FormSeleccionaProveedor').submit();"})-->
+            <select id="BioDDLProveedor" name="BioDDLProveedor" onchange="document.getElementById('FormSeleccionaProveedor').submit();">
+                @foreach (var item in ListadoProveedores)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </form>
+     }
+       <h1>Bienvenido @Nombre </h1>
+       <h2> RIF @RIF</h2>
+</div>
+

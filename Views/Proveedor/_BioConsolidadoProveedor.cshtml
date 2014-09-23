@@ -1,0 +1,209 @@
+﻿@using System.Configuration
+@using System.Data.SqlClient
+@{
+    var connectionString = ConfigurationManager.ConnectionStrings["SiteSqlServer"].ConnectionString;
+    var con = new SqlConnection(connectionString);
+    con.Open();
+    var command = new SqlCommand("BioObtenerConsolidadoProveedor", con);
+    command.CommandType = System.Data.CommandType.StoredProcedure;
+    if (Session["BioRIFproveedor"] != null)
+    {
+        command.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+    }
+    DateTime Hace2Meses = DateTime.Now.AddMonths(-2);
+    DateTime FechaDesde = new DateTime(Hace2Meses.Year, Hace2Meses.Month, 1);
+    DateTime FechaHasta = DateTime.Now.AddDays(1);
+    if (Request["FechaDesde"] != null && Request["FechaHasta"] != null)
+    {
+        if (Request["FechaDesde"].IndexOf('/') > 0 && Request["FechaDesde"].Length == 10 && Request["FechaDesde"].Split('/').Count() == 3 && Request["FechaHasta"].IndexOf('/') > 0 && Request["FechaHasta"].Length == 10 && Request["FechaHasta"].Split('/').Count() == 3)
+        {
+            try
+            {
+                FechaDesde = new DateTime(int.Parse(Request["FechaDesde"].Split('/')[2]), int.Parse(Request["FechaDesde"].Split('/')[1]), int.Parse(Request["FechaDesde"].Split('/')[0]));
+                FechaHasta = new DateTime(int.Parse(Request["FechaHasta"].Split('/')[2]), int.Parse(Request["FechaHasta"].Split('/')[1]), int.Parse(Request["FechaHasta"].Split('/')[0]));
+            }
+            catch { }
+        }
+        Session["FechaDesde"] = FechaDesde;
+        Session["FechaHasta"] = FechaHasta;
+    }
+    else
+    {
+        if(Session["FechaDesde"] !=null && Session["FechaHasta"]!=null)
+        {
+            FechaDesde = (DateTime)Session["FechaDesde"];
+            FechaHasta = (DateTime)Session["FechaHasta"];
+        }
+    }
+    command.Parameters.Add("@FechaDesde", FechaDesde);
+    command.Parameters.Add("@FechaHasta", FechaHasta);
+    SqlDataReader myReader = command.ExecuteReader();
+
+}
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="~/Content/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/css/jquery-ui.css">
+
+<!-- jQuery -->
+<script type=" text/javascript" language="javascript" src="~/Scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="~/Scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" language="javascript" src="~/Scripts/jquery.ui.datepicker-es.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="~/Scripts/jquery.dataTables.min.js"></script>
+
+
+<form id="FormSeleccionaProveedor" method="post" action="">
+   Resumen del período desde: <input id="FechaDesde" name="FechaDesde" type="text" value="@FechaDesde.ToString("dd/MM/yyyy")" /> Hasta: <input id="FechaHasta" name="FechaHasta" type="text" value="@FechaHasta.ToString("dd/MM/yyyy")" />
+    <input type="submit" value="Actualizar" name="Actualizar" />
+</form>
+
+
+<script>
+ $(document).ready(function () {
+    $("#FechaDesde").datepicker();
+    $("#FechaHasta").datepicker();
+    $('#Consolidado').dataTable(
+                {
+                    "paging":   false,
+                    "ordering": false,
+                    "info":     false,
+                    "search": false,
+                    "language": {
+                        "url": "@Url.Content("~")Scripts/DataTables/Spanish.json"
+                         }
+                });
+
+
+ });
+    </script>
+<table id="Consolidado" class="display compact" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Tipo de Operación</th>
+            <th>Cantidad</th>
+            <th>Monto</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @while (myReader.Read())
+        {
+            <tr>
+                <td align="left"><a href="@myReader["URL"].ToString()" > @myReader["Operacion"].ToString()</a></td>
+                <td align="right">@Convert.ToDecimal(myReader["Cantidad"]).ToString("N2")</td>
+                <td align="right">@Convert.ToDecimal(myReader["Monto"]).ToString("N2")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+@{
+    con.Close();
+    var commandUltimasFac = new SqlCommand("BioObtenerUltimasFacturas", con);
+    commandUltimasFac.CommandType = System.Data.CommandType.StoredProcedure;
+    commandUltimasFac.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+
+    var con3 = new SqlConnection(connectionString);
+    var commandUltimosPagos = new SqlCommand("BioObtenerUltimosPagos", con3);
+    commandUltimosPagos.CommandType = System.Data.CommandType.StoredProcedure;
+    commandUltimosPagos.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+
+    var con4 = new SqlConnection(connectionString);
+    var commandProductos = new SqlCommand("BioProductosxProveedor", con4);
+    commandProductos.CommandType = System.Data.CommandType.StoredProcedure;
+    commandProductos.Parameters.Add("@RIF", Session["BioRIFproveedor"].ToString());
+
+    con.Open();
+    con3.Open();
+    con4.Open();
+    SqlDataReader myReaderUltimasFac = commandUltimasFac.ExecuteReader();
+    SqlDataReader myReaderUltimosPagosc = commandUltimosPagos.ExecuteReader();
+    SqlDataReader myReaderProductos = commandProductos.ExecuteReader();
+}
+<table cellpadding="20">
+    <tr>
+        <td width="40%" valign="top">
+            <h4>Últimas facturas.</h4>
+            <table id="Facturas" class="display compact" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Fecha Emisión</th>
+                        <th>Monto</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @while (myReaderUltimasFac.Read())
+                    {
+                        <tr>
+                            <td align="center"> @myReaderUltimasFac["Factura"].ToString()</td>
+                            <td align="center">@Convert.ToDateTime(myReaderUltimasFac["FechaEmision"]).ToString("dd/MM/yyyy")</td>
+                            <td align="right">@Convert.ToDecimal(myReaderUltimasFac["MontoTotalFactura"]).ToString("N2")</td>
+                            <td align="center"> @myReaderUltimasFac["Estatus"].ToString()</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </td>
+        <td width="40%" valign="top">
+            <h4>Últimos pagos.</h4>
+            <table id="Pagos" class="display compact" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Factura</th>
+                        <th>Fecha Pago</th>
+                        <th>Monto</th>
+                        <th>Detalle</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @while (myReaderUltimosPagosc.Read())
+                    {
+                        <tr>
+                            <td align="center"> @myReaderUltimosPagosc["Factura"].ToString()</td>
+                            <td align="center">@Convert.ToDateTime(myReaderUltimosPagosc["FechaPago"]).ToString("dd/MM/yyyy")</td>
+                            <td align="right">@Convert.ToDecimal(myReaderUltimosPagosc["TotalPagado"]).ToString("N2")</td>
+                            <td align="center"> @myReaderUltimosPagosc["Detalle"].ToString()</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </td>
+        <td width="20%" valign="top">
+            <table id="Productos" class="display compact" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Tienda</th>
+                        <th>Cantidad</th>
+                        <th>Presentación</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @while (myReaderProductos.Read())
+                    {
+                        <tr>
+                            <td align="center"> @myReaderProductos["Producto"].ToString()</td>
+                            <td align="center">@myReaderProductos["Tienda"].ToString()</td>
+                            <td align="right">@Convert.ToDecimal(myReaderProductos["Cantidad"]).ToString("N2")</td>
+                            <td align="center"> @myReaderProductos["Presentacion"].ToString()</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+@{
+    con.Close();
+    con3.Close();
+    con4.Close();
+}

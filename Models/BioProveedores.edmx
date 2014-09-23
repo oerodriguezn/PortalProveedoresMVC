@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VAD10Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'VAD10.dbo.MA_INVENTARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="MA_INVENTARIO">
+          <Key>
+            <PropertyRef Name="c_CONCEPTO" />
+            <PropertyRef Name="c_DOCUMENTO" />
+            <PropertyRef Name="d_FECHA" />
+            <PropertyRef Name="c_DESCRIPCION" />
+            <PropertyRef Name="c_STATUS" />
+            <PropertyRef Name="c_CODPROVEEDOR" />
+            <PropertyRef Name="c_CODLOCALIDAD" />
+            <PropertyRef Name="c_codmoneda" />
+            <PropertyRef Name="n_FACTORCAMBIO" />
+            <PropertyRef Name="n_DESCUENTO" />
+            <PropertyRef Name="c_OBSERVACION" />
+            <PropertyRef Name="c_RELACION" />
+            <PropertyRef Name="c_CODCOMPRADOR" />
+            <PropertyRef Name="c_DEP_ORIG" />
+            <PropertyRef Name="c_DEP_DEST" />
+            <PropertyRef Name="c_MOTIVO" />
+            <PropertyRef Name="c_codtransporte" />
+            <PropertyRef Name="c_ejecutor" />
+            <PropertyRef Name="c_factura" />
+            <PropertyRef Name="c_transportista" />
+            <PropertyRef Name="n_cantidad_compra" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CODCONCEPTO" />
+            <PropertyRef Name="cs_comprobanteContable" />
+            <PropertyRef Name="ds_horainicio" />
+            <PropertyRef Name="ds_horafinal" />
+            <PropertyRef Name="CS_CODLOCALIDAD" />
+            <PropertyRef Name="CS_NUMERO_TRANSFERENCIA" />
+            <PropertyRef Name="CS_CODUNIDAD" />
+            <PropertyRef Name="CS_NUMTRANSF_DESTINO" />
+          </Key>
+          <Property Name="c_CONCEPTO" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="c_DOCUMENTO" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="d_FECHA" Type="datetime" Nullable="false" />
+          <Property Name="c_DESCRIPCION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_STATUS" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="c_CODPROVEEDOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_CODLOCALIDAD" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_codmoneda" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="n_FACTORCAMBIO" Type="float" Nullable="false" />
+          <Property Name="n_DESCUENTO" Type="float" Nullable="false" />
+          <Property Name="c_OBSERVACION" Type="ntext" Nullable="false" />
+          <Property Name="c_RELACION" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="c_CODCOMPRADOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_DEP_ORIG" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_DEP_DEST" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_MOTIVO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_codtransporte" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_ejecutor" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_factura" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="c_transportista" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="n_cantidad_compra" Type="float" Nullable="false" />
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODCONCEPTO" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cs_comprobanteContable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_horainicio" Type="datetime" Nullable="false" />
+          <Property Name="ds_horafinal" Type="datetime" Nullable="false" />
+          <Property Name="CS_CODLOCALIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CS_NUMERO_TRANSFERENCIA" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CS_CODUNIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CS_NUMTRANSF_DESTINO" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MA_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="C_CODIGO" />
+          </Key>
+          <Property Name="C_CODIGO" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="C_DESCRI" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_departamento" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="c_grupo" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="c_subgrupo" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="c_marca" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="c_modelo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="c_procede" Type="bit" Nullable="false" />
+          <Property Name="n_costoact" Type="float" Nullable="false" />
+          <Property Name="n_costoant" Type="float" Nullable="false" />
+          <Property Name="n_costopro" Type="float" Nullable="false" />
+          <Property Name="n_costorep" Type="float" Nullable="false" />
+          <Property Name="n_precio1" Type="float" Nullable="false" />
+          <Property Name="n_precio2" Type="float" Nullable="false" />
+          <Property Name="n_precio3" Type="float" Nullable="false" />
+          <Property Name="c_seriales" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="c_compuesto" Type="int" Nullable="false" />
+          <Property Name="c_presenta" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="n_peso" Type="float" Nullable="false" />
+          <Property Name="n_volumen" Type="float" Nullable="false" />
+          <Property Name="n_cantibul" Type="float" Nullable="false" />
+          <Property Name="n_pesobul" Type="float" Nullable="false" />
+          <Property Name="n_volbul" Type="float" Nullable="false" />
+          <Property Name="c_fileimagen" Type="image" />
+          <Property Name="n_impuesto1" Type="float" Nullable="false" />
+          <Property Name="n_impuesto2" Type="float" Nullable="false" />
+          <Property Name="n_impuesto3" Type="float" Nullable="false" />
+          <Property Name="c_cod_arancel" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="c_des_arancel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="n_por_arancel" Type="float" Nullable="false" />
+          <Property Name="n_costo_original" Type="float" Nullable="false" />
+          <Property Name="c_observacio" Type="ntext" Nullable="false" />
+          <Property Name="n_activo" Type="int" Nullable="false" />
+          <Property Name="n_tipopeso" Type="int" Nullable="false" />
+          <Property Name="n_precioO" Type="float" Nullable="false" />
+          <Property Name="f_inicial" Type="datetime" Nullable="false" />
+          <Property Name="f_final" Type="datetime" Nullable="false" />
+          <Property Name="h_inicial" Type="datetime" Nullable="false" />
+          <Property Name="h_final" Type="datetime" Nullable="false" />
+          <Property Name="add_date" Type="datetime" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="c_codfabricante" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="HABLADOR" Type="int" Nullable="false" />
+          <Property Name="C_CODMONEDA" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CANT_DECIMALES" Type="int" Nullable="false" />
+          <Property Name="MONEDA_ANT" Type="float" Nullable="false" />
+          <Property Name="MONEDA_ACT" Type="float" Nullable="false" />
+          <Property Name="MONEDA_PRO" Type="float" Nullable="false" />
+          <Property Name="C_CODIGO_BASE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_DESCRI_BASE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT4" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT5" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT6" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT7" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT8" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATE1" Type="datetime" Nullable="false" />
+          <Property Name="NUME1" Type="float" Nullable="false" />
+          <Property Name="N_CANTIDAD_TMP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="C_COD_PLANTILLA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_usuarioAdd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_usuarioupd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_PROD_EXT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_PRO_EXT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NU_TIPO_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="nu_insumointerno" Type="int" Nullable="false" />
+          <Property Name="nu_precioregulado" Type="int" Nullable="false" />
+          <Property Name="nu_pocentajemerma" Type="float" Nullable="false" />
+          <Property Name="nu_nivelClave" Type="int" Nullable="false" />
+          <Property Name="CU_DESCRIPCION_CORTA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bs_permiteteclado" Type="bit" Nullable="false" />
+          <Property Name="bs_permitecantidad" Type="bit" Nullable="false" />
+          <Property Name="nu_stockmin" Type="float" Nullable="false" />
+          <Property Name="nu_stockmax" Type="float" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MA_PROVEEDORES">
+          <Key>
+            <PropertyRef Name="c_codproveed" />
+            <PropertyRef Name="c_descripcio" />
+            <PropertyRef Name="c_rif" />
+            <PropertyRef Name="c_nit" />
+          </Key>
+          <Property Name="c_codproveed" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_descripcio" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_rif" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_representa" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="c_cargo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="c_direccion" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="c_ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="c_estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="c_pais" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="c_email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_celular" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_fax" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_web" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="n_limite" Type="float" Nullable="false" />
+          <Property Name="n_dias" Type="int" Nullable="false" />
+          <Property Name="n_porcentaje" Type="float" Nullable="false" />
+          <Property Name="c_observacio" Type="ntext" Nullable="false" />
+          <Property Name="c_nit" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="n_activo" Type="int" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="add_date" Type="datetime" Nullable="false" />
+          <Property Name="c_razon" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_codreferencial" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_contacto_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_contacto_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_contacto_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_contacto_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_fiscal" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_depo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_rep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_celular_adm" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_celular_ven" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_celular_reg" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_celular_vdd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_direccion_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_ciudad_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_estado_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_pais_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_telefono_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_fax_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_email_dep" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_cod_banco" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_cuenta_banco" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="c_cuentahabiente" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="n_dia2" Type="int" Nullable="false" />
+          <Property Name="n_porcentaje2" Type="float" Nullable="false" />
+          <Property Name="n_dia3" Type="int" Nullable="false" />
+          <Property Name="n_porcentaje3" Type="float" Nullable="false" />
+          <Property Name="c_codlicores" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="n_diasdespacho" Type="int" Nullable="false" />
+          <Property Name="B_PREFERENCIAL" Type="int" Nullable="false" />
+          <Property Name="N_RETENCION" Type="float" Nullable="false" />
+          <Property Name="CS_COMPRADOR" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="bu_cualquier_cuenta" Type="bit" Nullable="false" />
+          <Property Name="cs_tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_rim" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="n_diasreposicion" Type="int" Nullable="false" />
+          <Property Name="n_diasanalisis" Type="int" Nullable="false" />
+          <Property Name="n_descaveria" Type="int" Nullable="false" />
+          <Property Name="b_enviarOdcL" Type="bit" Nullable="false" />
+          <Property Name="b_enviarOdcA" Type="bit" Nullable="false" />
+          <Property Name="b_enviarOdcV" Type="bit" Nullable="false" />
+          <Property Name="b_enviarOdcR" Type="bit" Nullable="false" />
+          <Property Name="b_enviarOdcVen" Type="bit" Nullable="false" />
+          <Property Name="n_porcentaje_seniat" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TR_INVENTARIO">
+          <Key>
+            <PropertyRef Name="c_LINEA" />
+            <PropertyRef Name="c_CONCEPTO" />
+            <PropertyRef Name="c_DOCUMENTO" />
+            <PropertyRef Name="c_DEPOSITO" />
+            <PropertyRef Name="c_CODARTICULO" />
+            <PropertyRef Name="c_TIPOMOV" />
+            <PropertyRef Name="c_codlocalidad" />
+          </Key>
+          <Property Name="c_LINEA" Type="int" Nullable="false" />
+          <Property Name="c_CONCEPTO" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="c_DOCUMENTO" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="c_DEPOSITO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_CODARTICULO" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="n_CANTIDAD" Type="float" Nullable="false" />
+          <Property Name="n_COSTO" Type="float" Nullable="false" />
+          <Property Name="n_SUBTOTAL" Type="float" Nullable="false" />
+          <Property Name="n_IMPUESTO" Type="float" Nullable="false" />
+          <Property Name="n_TOTAL" Type="float" Nullable="false" />
+          <Property Name="c_TIPOMOV" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="n_cant_teorica" Type="float" Nullable="false" />
+          <Property Name="n_cant_diferencia" Type="float" Nullable="false" />
+          <Property Name="N_PRECIO" Type="float" Nullable="false" />
+          <Property Name="N_PRECIO_ORIGINAL" Type="float" Nullable="false" />
+          <Property Name="f_fecha" Type="datetime" Nullable="false" />
+          <Property Name="c_codlocalidad" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="n_factorcambio" Type="float" Nullable="false" />
+          <Property Name="id" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_DESCRIPCION" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="C_COMPUESTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codconcepto" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="n_descuentogeneral" Type="float" Nullable="false" />
+          <Property Name="n_descuentoespecifico" Type="float" Nullable="false" />
+          <Property Name="c_documento_origen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_tipodoc_origen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_CANTIDADFAC" Type="float" Nullable="false" />
+          <Property Name="ns_descuento" Type="float" Nullable="false" />
+          <Property Name="cs_comprobanteContable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cs_codlocalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ns_CantidadEmpaque" Type="float" Nullable="false" />
+          <Property Name="IMPUESTO" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="VAD10ModelStoreContainer">
+          <EntitySet Name="MA_PRODUCTOS" EntityType="Self.MA_PRODUCTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MA_PROVEEDORES" EntityType="Self.MA_PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TR_INVENTARIO" EntityType="Self.TR_INVENTARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MA_INVENTARIO" EntityType="Self.MA_INVENTARIO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MA_INVENTARIO].[c_CONCEPTO] AS [c_CONCEPTO], 
+    [MA_INVENTARIO].[c_DOCUMENTO] AS [c_DOCUMENTO], 
+    [MA_INVENTARIO].[d_FECHA] AS [d_FECHA], 
+    [MA_INVENTARIO].[c_DESCRIPCION] AS [c_DESCRIPCION], 
+    [MA_INVENTARIO].[c_STATUS] AS [c_STATUS], 
+    [MA_INVENTARIO].[c_CODPROVEEDOR] AS [c_CODPROVEEDOR], 
+    [MA_INVENTARIO].[c_CODLOCALIDAD] AS [c_CODLOCALIDAD], 
+    [MA_INVENTARIO].[c_codmoneda] AS [c_codmoneda], 
+    [MA_INVENTARIO].[n_FACTORCAMBIO] AS [n_FACTORCAMBIO], 
+    [MA_INVENTARIO].[n_DESCUENTO] AS [n_DESCUENTO], 
+    [MA_INVENTARIO].[c_OBSERVACION] AS [c_OBSERVACION], 
+    [MA_INVENTARIO].[c_RELACION] AS [c_RELACION], 
+    [MA_INVENTARIO].[c_CODCOMPRADOR] AS [c_CODCOMPRADOR], 
+    [MA_INVENTARIO].[c_DEP_ORIG] AS [c_DEP_ORIG], 
+    [MA_INVENTARIO].[c_DEP_DEST] AS [c_DEP_DEST], 
+    [MA_INVENTARIO].[c_MOTIVO] AS [c_MOTIVO], 
+    [MA_INVENTARIO].[c_codtransporte] AS [c_codtransporte], 
+    [MA_INVENTARIO].[c_ejecutor] AS [c_ejecutor], 
+    [MA_INVENTARIO].[c_factura] AS [c_factura], 
+    [MA_INVENTARIO].[c_transportista] AS [c_transportista], 
+    [MA_INVENTARIO].[n_cantidad_compra] AS [n_cantidad_compra], 
+    [MA_INVENTARIO].[id] AS [id], 
+    [MA_INVENTARIO].[CODCONCEPTO] AS [CODCONCEPTO], 
+    [MA_INVENTARIO].[cs_comprobanteContable] AS [cs_comprobanteContable], 
+    [MA_INVENTARIO].[ds_horainicio] AS [ds_horainicio], 
+    [MA_INVENTARIO].[ds_horafinal] AS [ds_horafinal], 
+    [MA_INVENTARIO].[CS_CODLOCALIDAD] AS [CS_CODLOCALIDAD], 
+    [MA_INVENTARIO].[CS_NUMERO_TRANSFERENCIA] AS [CS_NUMERO_TRANSFERENCIA], 
+    [MA_INVENTARIO].[CS_CODUNIDAD] AS [CS_CODUNIDAD], 
+    [MA_INVENTARIO].[CS_NUMTRANSF_DESTINO] AS [CS_NUMTRANSF_DESTINO]
+    FROM [dbo].[MA_INVENTARIO] AS [MA_INVENTARIO]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VAD10Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MA_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="C_CODIGO" />
+          </Key>
+          <Property Name="C_CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_DESCRI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_departamento" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_grupo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_subgrupo" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_marca" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_modelo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_procede" Type="Boolean" Nullable="false" />
+          <Property Name="n_costoact" Type="Double" Nullable="false" />
+          <Property Name="n_costoant" Type="Double" Nullable="false" />
+          <Property Name="n_costopro" Type="Double" Nullable="false" />
+          <Property Name="n_costorep" Type="Double" Nullable="false" />
+          <Property Name="n_precio1" Type="Double" Nullable="false" />
+          <Property Name="n_precio2" Type="Double" Nullable="false" />
+          <Property Name="n_precio3" Type="Double" Nullable="false" />
+          <Property Name="c_seriales" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_compuesto" Type="Int32" Nullable="false" />
+          <Property Name="c_presenta" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_peso" Type="Double" Nullable="false" />
+          <Property Name="n_volumen" Type="Double" Nullable="false" />
+          <Property Name="n_cantibul" Type="Double" Nullable="false" />
+          <Property Name="n_pesobul" Type="Double" Nullable="false" />
+          <Property Name="n_volbul" Type="Double" Nullable="false" />
+          <Property Name="c_fileimagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="n_impuesto1" Type="Double" Nullable="false" />
+          <Property Name="n_impuesto2" Type="Double" Nullable="false" />
+          <Property Name="n_impuesto3" Type="Double" Nullable="false" />
+          <Property Name="c_cod_arancel" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_des_arancel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_por_arancel" Type="Double" Nullable="false" />
+          <Property Name="n_costo_original" Type="Double" Nullable="false" />
+          <Property Name="c_observacio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_activo" Type="Int32" Nullable="false" />
+          <Property Name="n_tipopeso" Type="Int32" Nullable="false" />
+          <Property Name="n_precioO" Type="Double" Nullable="false" />
+          <Property Name="f_inicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="f_final" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="h_inicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="h_final" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="add_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_codfabricante" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HABLADOR" Type="Int32" Nullable="false" />
+          <Property Name="C_CODMONEDA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CANT_DECIMALES" Type="Int32" Nullable="false" />
+          <Property Name="MONEDA_ANT" Type="Double" Nullable="false" />
+          <Property Name="MONEDA_ACT" Type="Double" Nullable="false" />
+          <Property Name="MONEDA_PRO" Type="Double" Nullable="false" />
+          <Property Name="C_CODIGO_BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_DESCRI_BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATE1" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NUME1" Type="Double" Nullable="false" />
+          <Property Name="N_CANTIDAD_TMP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_COD_PLANTILLA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_usuarioAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_usuarioupd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_PROD_EXT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_PRO_EXT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NU_TIPO_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="nu_insumointerno" Type="Int32" Nullable="false" />
+          <Property Name="nu_precioregulado" Type="Int32" Nullable="false" />
+          <Property Name="nu_pocentajemerma" Type="Double" Nullable="false" />
+          <Property Name="nu_nivelClave" Type="Int32" Nullable="false" />
+          <Property Name="CU_DESCRIPCION_CORTA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bs_permiteteclado" Type="Boolean" Nullable="false" />
+          <Property Name="bs_permitecantidad" Type="Boolean" Nullable="false" />
+          <Property Name="nu_stockmin" Type="Double" Nullable="false" />
+          <Property Name="nu_stockmax" Type="Double" Nullable="false" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MA_PROVEEDORES">
+          <Key>
+            <PropertyRef Name="c_codproveed" />
+            <PropertyRef Name="c_descripcio" />
+            <PropertyRef Name="c_rif" />
+            <PropertyRef Name="c_nit" />
+          </Key>
+          <Property Name="c_codproveed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_descripcio" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_rif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_representa" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_direccion" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_pais" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_limite" Type="Double" Nullable="false" />
+          <Property Name="n_dias" Type="Int32" Nullable="false" />
+          <Property Name="n_porcentaje" Type="Double" Nullable="false" />
+          <Property Name="c_observacio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_nit" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_activo" Type="Int32" Nullable="false" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="add_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_razon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_codreferencial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_contacto_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_contacto_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_contacto_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_contacto_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_fiscal" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_depo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_rep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_celular_adm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_celular_ven" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_celular_reg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_celular_vdd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_direccion_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_ciudad_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_estado_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_pais_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_telefono_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_fax_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_email_dep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_cod_banco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_cuenta_banco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_cuentahabiente" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_dia2" Type="Int32" Nullable="false" />
+          <Property Name="n_porcentaje2" Type="Double" Nullable="false" />
+          <Property Name="n_dia3" Type="Int32" Nullable="false" />
+          <Property Name="n_porcentaje3" Type="Double" Nullable="false" />
+          <Property Name="c_codlicores" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_diasdespacho" Type="Int32" Nullable="false" />
+          <Property Name="B_PREFERENCIAL" Type="Int32" Nullable="false" />
+          <Property Name="N_RETENCION" Type="Double" Nullable="false" />
+          <Property Name="CS_COMPRADOR" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bu_cualquier_cuenta" Type="Boolean" Nullable="false" />
+          <Property Name="cs_tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_rim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_diasreposicion" Type="Int32" Nullable="false" />
+          <Property Name="n_diasanalisis" Type="Int32" Nullable="false" />
+          <Property Name="n_descaveria" Type="Int32" Nullable="false" />
+          <Property Name="b_enviarOdcL" Type="Boolean" Nullable="false" />
+          <Property Name="b_enviarOdcA" Type="Boolean" Nullable="false" />
+          <Property Name="b_enviarOdcV" Type="Boolean" Nullable="false" />
+          <Property Name="b_enviarOdcR" Type="Boolean" Nullable="false" />
+          <Property Name="b_enviarOdcVen" Type="Boolean" Nullable="false" />
+          <Property Name="n_porcentaje_seniat" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TR_INVENTARIO">
+          <Key>
+            <PropertyRef Name="c_LINEA" />
+            <PropertyRef Name="c_CONCEPTO" />
+            <PropertyRef Name="c_DOCUMENTO" />
+            <PropertyRef Name="c_DEPOSITO" />
+            <PropertyRef Name="c_CODARTICULO" />
+            <PropertyRef Name="c_TIPOMOV" />
+            <PropertyRef Name="c_codlocalidad" />
+          </Key>
+          <Property Name="c_LINEA" Type="Int32" Nullable="false" />
+          <Property Name="c_CONCEPTO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_DOCUMENTO" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_DEPOSITO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_CODARTICULO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_CANTIDAD" Type="Double" Nullable="false" />
+          <Property Name="n_COSTO" Type="Double" Nullable="false" />
+          <Property Name="n_SUBTOTAL" Type="Double" Nullable="false" />
+          <Property Name="n_IMPUESTO" Type="Double" Nullable="false" />
+          <Property Name="n_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="c_TIPOMOV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_cant_teorica" Type="Double" Nullable="false" />
+          <Property Name="n_cant_diferencia" Type="Double" Nullable="false" />
+          <Property Name="N_PRECIO" Type="Double" Nullable="false" />
+          <Property Name="N_PRECIO_ORIGINAL" Type="Double" Nullable="false" />
+          <Property Name="f_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_codlocalidad" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_factorcambio" Type="Double" Nullable="false" />
+          <Property Name="id" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_DESCRIPCION" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_COMPUESTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codconcepto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="n_descuentogeneral" Type="Double" Nullable="false" />
+          <Property Name="n_descuentoespecifico" Type="Double" Nullable="false" />
+          <Property Name="c_documento_origen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_tipodoc_origen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_CANTIDADFAC" Type="Double" Nullable="false" />
+          <Property Name="ns_descuento" Type="Double" Nullable="false" />
+          <Property Name="cs_comprobanteContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cs_codlocalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ns_CantidadEmpaque" Type="Double" Nullable="false" />
+          <Property Name="IMPUESTO" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MA_INVENTARIO">
+          <Key>
+            <PropertyRef Name="c_CONCEPTO" />
+            <PropertyRef Name="c_DOCUMENTO" />
+            <PropertyRef Name="d_FECHA" />
+            <PropertyRef Name="c_DESCRIPCION" />
+            <PropertyRef Name="c_STATUS" />
+            <PropertyRef Name="c_CODPROVEEDOR" />
+            <PropertyRef Name="c_CODLOCALIDAD" />
+            <PropertyRef Name="c_codmoneda" />
+            <PropertyRef Name="n_FACTORCAMBIO" />
+            <PropertyRef Name="n_DESCUENTO" />
+            <PropertyRef Name="c_OBSERVACION" />
+            <PropertyRef Name="c_RELACION" />
+            <PropertyRef Name="c_CODCOMPRADOR" />
+            <PropertyRef Name="c_DEP_ORIG" />
+            <PropertyRef Name="c_DEP_DEST" />
+            <PropertyRef Name="c_MOTIVO" />
+            <PropertyRef Name="c_codtransporte" />
+            <PropertyRef Name="c_ejecutor" />
+            <PropertyRef Name="c_factura" />
+            <PropertyRef Name="c_transportista" />
+            <PropertyRef Name="n_cantidad_compra" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CODCONCEPTO" />
+            <PropertyRef Name="cs_comprobanteContable" />
+            <PropertyRef Name="ds_horainicio" />
+            <PropertyRef Name="ds_horafinal" />
+            <PropertyRef Name="CS_CODLOCALIDAD" />
+            <PropertyRef Name="CS_NUMERO_TRANSFERENCIA" />
+            <PropertyRef Name="CS_CODUNIDAD" />
+            <PropertyRef Name="CS_NUMTRANSF_DESTINO" />
+          </Key>
+          <Property Name="c_CONCEPTO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_DOCUMENTO" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_STATUS" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_CODPROVEEDOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_CODLOCALIDAD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_codmoneda" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_FACTORCAMBIO" Type="Double" Nullable="false" />
+          <Property Name="n_DESCUENTO" Type="Double" Nullable="false" />
+          <Property Name="c_OBSERVACION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_RELACION" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_CODCOMPRADOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_DEP_ORIG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_DEP_DEST" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_MOTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_codtransporte" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_ejecutor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_factura" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c_transportista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_cantidad_compra" Type="Double" Nullable="false" />
+          <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODCONCEPTO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cs_comprobanteContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ds_horainicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ds_horafinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CS_CODLOCALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CS_NUMERO_TRANSFERENCIA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CS_CODUNIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CS_NUMTRANSF_DESTINO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BioMercadosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MA_PRODUCTOS" EntityType="Self.MA_PRODUCTOS" />
+          <EntitySet Name="MA_PROVEEDORES" EntityType="Self.MA_PROVEEDORES" />
+          <EntitySet Name="TR_INVENTARIO" EntityType="Self.TR_INVENTARIO" />
+          <EntitySet Name="MA_INVENTARIO" EntityType="Self.MA_INVENTARIO" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VAD10ModelStoreContainer" CdmEntityContainer="BioMercadosEntities">
+          <EntitySetMapping Name="MA_PRODUCTOS">
+            <EntityTypeMapping TypeName="VAD10Model.MA_PRODUCTOS">
+              <MappingFragment StoreEntitySet="MA_PRODUCTOS">
+                <ScalarProperty Name="C_CODIGO" ColumnName="C_CODIGO" />
+                <ScalarProperty Name="C_DESCRI" ColumnName="C_DESCRI" />
+                <ScalarProperty Name="c_departamento" ColumnName="c_departamento" />
+                <ScalarProperty Name="c_grupo" ColumnName="c_grupo" />
+                <ScalarProperty Name="c_subgrupo" ColumnName="c_subgrupo" />
+                <ScalarProperty Name="c_marca" ColumnName="c_marca" />
+                <ScalarProperty Name="c_modelo" ColumnName="c_modelo" />
+                <ScalarProperty Name="c_procede" ColumnName="c_procede" />
+                <ScalarProperty Name="n_costoact" ColumnName="n_costoact" />
+                <ScalarProperty Name="n_costoant" ColumnName="n_costoant" />
+                <ScalarProperty Name="n_costopro" ColumnName="n_costopro" />
+                <ScalarProperty Name="n_costorep" ColumnName="n_costorep" />
+                <ScalarProperty Name="n_precio1" ColumnName="n_precio1" />
+                <ScalarProperty Name="n_precio2" ColumnName="n_precio2" />
+                <ScalarProperty Name="n_precio3" ColumnName="n_precio3" />
+                <ScalarProperty Name="c_seriales" ColumnName="c_seriales" />
+                <ScalarProperty Name="c_compuesto" ColumnName="c_compuesto" />
+                <ScalarProperty Name="c_presenta" ColumnName="c_presenta" />
+                <ScalarProperty Name="n_peso" ColumnName="n_peso" />
+                <ScalarProperty Name="n_volumen" ColumnName="n_volumen" />
+                <ScalarProperty Name="n_cantibul" ColumnName="n_cantibul" />
+                <ScalarProperty Name="n_pesobul" ColumnName="n_pesobul" />
+                <ScalarProperty Name="n_volbul" ColumnName="n_volbul" />
+                <ScalarProperty Name="c_fileimagen" ColumnName="c_fileimagen" />
+                <ScalarProperty Name="n_impuesto1" ColumnName="n_impuesto1" />
+                <ScalarProperty Name="n_impuesto2" ColumnName="n_impuesto2" />
+                <ScalarProperty Name="n_impuesto3" ColumnName="n_impuesto3" />
+                <ScalarProperty Name="c_cod_arancel" ColumnName="c_cod_arancel" />
+                <ScalarProperty Name="c_des_arancel" ColumnName="c_des_arancel" />
+                <ScalarProperty Name="n_por_arancel" ColumnName="n_por_arancel" />
+                <ScalarProperty Name="n_costo_original" ColumnName="n_costo_original" />
+                <ScalarProperty Name="c_observacio" ColumnName="c_observacio" />
+                <ScalarProperty Name="n_activo" ColumnName="n_activo" />
+                <ScalarProperty Name="n_tipopeso" ColumnName="n_tipopeso" />
+                <ScalarProperty Name="n_precioO" ColumnName="n_precioO" />
+                <ScalarProperty Name="f_inicial" ColumnName="f_inicial" />
+                <ScalarProperty Name="f_final" ColumnName="f_final" />
+                <ScalarProperty Name="h_inicial" ColumnName="h_inicial" />
+                <ScalarProperty Name="h_final" ColumnName="h_final" />
+                <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="c_codfabricante" ColumnName="c_codfabricante" />
+                <ScalarProperty Name="HABLADOR" ColumnName="HABLADOR" />
+                <ScalarProperty Name="C_CODMONEDA" ColumnName="C_CODMONEDA" />
+                <ScalarProperty Name="CANT_DECIMALES" ColumnName="CANT_DECIMALES" />
+                <ScalarProperty Name="MONEDA_ANT" ColumnName="MONEDA_ANT" />
+                <ScalarProperty Name="MONEDA_ACT" ColumnName="MONEDA_ACT" />
+                <ScalarProperty Name="MONEDA_PRO" ColumnName="MONEDA_PRO" />
+                <ScalarProperty Name="C_CODIGO_BASE" ColumnName="C_CODIGO_BASE" />
+                <ScalarProperty Name="C_DESCRI_BASE" ColumnName="C_DESCRI_BASE" />
+                <ScalarProperty Name="TEXT1" ColumnName="TEXT1" />
+                <ScalarProperty Name="TEXT2" ColumnName="TEXT2" />
+                <ScalarProperty Name="TEXT3" ColumnName="TEXT3" />
+                <ScalarProperty Name="TEXT4" ColumnName="TEXT4" />
+                <ScalarProperty Name="TEXT5" ColumnName="TEXT5" />
+                <ScalarProperty Name="TEXT6" ColumnName="TEXT6" />
+                <ScalarProperty Name="TEXT7" ColumnName="TEXT7" />
+                <ScalarProperty Name="TEXT8" ColumnName="TEXT8" />
+                <ScalarProperty Name="DATE1" ColumnName="DATE1" />
+                <ScalarProperty Name="NUME1" ColumnName="NUME1" />
+                <ScalarProperty Name="N_CANTIDAD_TMP" ColumnName="N_CANTIDAD_TMP" />
+                <ScalarProperty Name="C_COD_PLANTILLA" ColumnName="C_COD_PLANTILLA" />
+                <ScalarProperty Name="c_usuarioAdd" ColumnName="c_usuarioAdd" />
+                <ScalarProperty Name="c_usuarioupd" ColumnName="c_usuarioupd" />
+                <ScalarProperty Name="N_PROD_EXT" ColumnName="N_PROD_EXT" />
+                <ScalarProperty Name="N_PRO_EXT" ColumnName="N_PRO_EXT" />
+                <ScalarProperty Name="NU_TIPO_PRODUCTO" ColumnName="NU_TIPO_PRODUCTO" />
+                <ScalarProperty Name="nu_insumointerno" ColumnName="nu_insumointerno" />
+                <ScalarProperty Name="nu_precioregulado" ColumnName="nu_precioregulado" />
+                <ScalarProperty Name="nu_pocentajemerma" ColumnName="nu_pocentajemerma" />
+                <ScalarProperty Name="nu_nivelClave" ColumnName="nu_nivelClave" />
+                <ScalarProperty Name="CU_DESCRIPCION_CORTA" ColumnName="CU_DESCRIPCION_CORTA" />
+                <ScalarProperty Name="bs_permiteteclado" ColumnName="bs_permiteteclado" />
+                <ScalarProperty Name="bs_permitecantidad" ColumnName="bs_permitecantidad" />
+                <ScalarProperty Name="nu_stockmin" ColumnName="nu_stockmin" />
+                <ScalarProperty Name="nu_stockmax" ColumnName="nu_stockmax" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_PROVEEDORES">
+            <EntityTypeMapping TypeName="VAD10Model.MA_PROVEEDORES">
+              <MappingFragment StoreEntitySet="MA_PROVEEDORES">
+                <ScalarProperty Name="c_codproveed" ColumnName="c_codproveed" />
+                <ScalarProperty Name="c_descripcio" ColumnName="c_descripcio" />
+                <ScalarProperty Name="c_grupo" ColumnName="c_grupo" />
+                <ScalarProperty Name="c_rif" ColumnName="c_rif" />
+                <ScalarProperty Name="c_representa" ColumnName="c_representa" />
+                <ScalarProperty Name="c_cargo" ColumnName="c_cargo" />
+                <ScalarProperty Name="c_direccion" ColumnName="c_direccion" />
+                <ScalarProperty Name="c_ciudad" ColumnName="c_ciudad" />
+                <ScalarProperty Name="c_estado" ColumnName="c_estado" />
+                <ScalarProperty Name="c_pais" ColumnName="c_pais" />
+                <ScalarProperty Name="c_email" ColumnName="c_email" />
+                <ScalarProperty Name="c_telefono" ColumnName="c_telefono" />
+                <ScalarProperty Name="c_celular" ColumnName="c_celular" />
+                <ScalarProperty Name="c_fax" ColumnName="c_fax" />
+                <ScalarProperty Name="c_web" ColumnName="c_web" />
+                <ScalarProperty Name="n_limite" ColumnName="n_limite" />
+                <ScalarProperty Name="n_dias" ColumnName="n_dias" />
+                <ScalarProperty Name="n_porcentaje" ColumnName="n_porcentaje" />
+                <ScalarProperty Name="c_observacio" ColumnName="c_observacio" />
+                <ScalarProperty Name="c_nit" ColumnName="c_nit" />
+                <ScalarProperty Name="n_activo" ColumnName="n_activo" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="c_razon" ColumnName="c_razon" />
+                <ScalarProperty Name="c_codreferencial" ColumnName="c_codreferencial" />
+                <ScalarProperty Name="c_contacto_adm" ColumnName="c_contacto_adm" />
+                <ScalarProperty Name="c_contacto_ven" ColumnName="c_contacto_ven" />
+                <ScalarProperty Name="c_contacto_reg" ColumnName="c_contacto_reg" />
+                <ScalarProperty Name="c_contacto_vdd" ColumnName="c_contacto_vdd" />
+                <ScalarProperty Name="c_email_adm" ColumnName="c_email_adm" />
+                <ScalarProperty Name="c_email_ven" ColumnName="c_email_ven" />
+                <ScalarProperty Name="c_email_reg" ColumnName="c_email_reg" />
+                <ScalarProperty Name="c_email_vdd" ColumnName="c_email_vdd" />
+                <ScalarProperty Name="c_email_fiscal" ColumnName="c_email_fiscal" />
+                <ScalarProperty Name="c_email_depo" ColumnName="c_email_depo" />
+                <ScalarProperty Name="c_telefono_rep" ColumnName="c_telefono_rep" />
+                <ScalarProperty Name="c_telefono_adm" ColumnName="c_telefono_adm" />
+                <ScalarProperty Name="c_telefono_ven" ColumnName="c_telefono_ven" />
+                <ScalarProperty Name="c_telefono_reg" ColumnName="c_telefono_reg" />
+                <ScalarProperty Name="c_telefono_vdd" ColumnName="c_telefono_vdd" />
+                <ScalarProperty Name="c_celular_adm" ColumnName="c_celular_adm" />
+                <ScalarProperty Name="c_celular_ven" ColumnName="c_celular_ven" />
+                <ScalarProperty Name="c_celular_reg" ColumnName="c_celular_reg" />
+                <ScalarProperty Name="c_celular_vdd" ColumnName="c_celular_vdd" />
+                <ScalarProperty Name="c_direccion_dep" ColumnName="c_direccion_dep" />
+                <ScalarProperty Name="c_ciudad_dep" ColumnName="c_ciudad_dep" />
+                <ScalarProperty Name="c_estado_dep" ColumnName="c_estado_dep" />
+                <ScalarProperty Name="c_pais_dep" ColumnName="c_pais_dep" />
+                <ScalarProperty Name="c_telefono_dep" ColumnName="c_telefono_dep" />
+                <ScalarProperty Name="c_fax_dep" ColumnName="c_fax_dep" />
+                <ScalarProperty Name="c_email_dep" ColumnName="c_email_dep" />
+                <ScalarProperty Name="c_cod_banco" ColumnName="c_cod_banco" />
+                <ScalarProperty Name="c_cuenta_banco" ColumnName="c_cuenta_banco" />
+                <ScalarProperty Name="c_cuentahabiente" ColumnName="c_cuentahabiente" />
+                <ScalarProperty Name="n_dia2" ColumnName="n_dia2" />
+                <ScalarProperty Name="n_porcentaje2" ColumnName="n_porcentaje2" />
+                <ScalarProperty Name="n_dia3" ColumnName="n_dia3" />
+                <ScalarProperty Name="n_porcentaje3" ColumnName="n_porcentaje3" />
+                <ScalarProperty Name="c_codlicores" ColumnName="c_codlicores" />
+                <ScalarProperty Name="n_diasdespacho" ColumnName="n_diasdespacho" />
+                <ScalarProperty Name="B_PREFERENCIAL" ColumnName="B_PREFERENCIAL" />
+                <ScalarProperty Name="N_RETENCION" ColumnName="N_RETENCION" />
+                <ScalarProperty Name="CS_COMPRADOR" ColumnName="CS_COMPRADOR" />
+                <ScalarProperty Name="bu_cualquier_cuenta" ColumnName="bu_cualquier_cuenta" />
+                <ScalarProperty Name="cs_tipo" ColumnName="cs_tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="c_rim" ColumnName="c_rim" />
+                <ScalarProperty Name="n_diasreposicion" ColumnName="n_diasreposicion" />
+                <ScalarProperty Name="n_diasanalisis" ColumnName="n_diasanalisis" />
+                <ScalarProperty Name="n_descaveria" ColumnName="n_descaveria" />
+                <ScalarProperty Name="b_enviarOdcL" ColumnName="b_enviarOdcL" />
+                <ScalarProperty Name="b_enviarOdcA" ColumnName="b_enviarOdcA" />
+                <ScalarProperty Name="b_enviarOdcV" ColumnName="b_enviarOdcV" />
+                <ScalarProperty Name="b_enviarOdcR" ColumnName="b_enviarOdcR" />
+                <ScalarProperty Name="b_enviarOdcVen" ColumnName="b_enviarOdcVen" />
+                <ScalarProperty Name="n_porcentaje_seniat" ColumnName="n_porcentaje_seniat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TR_INVENTARIO">
+            <EntityTypeMapping TypeName="VAD10Model.TR_INVENTARIO">
+              <MappingFragment StoreEntitySet="TR_INVENTARIO">
+                <ScalarProperty Name="c_LINEA" ColumnName="c_LINEA" />
+                <ScalarProperty Name="c_CONCEPTO" ColumnName="c_CONCEPTO" />
+                <ScalarProperty Name="c_DOCUMENTO" ColumnName="c_DOCUMENTO" />
+                <ScalarProperty Name="c_DEPOSITO" ColumnName="c_DEPOSITO" />
+                <ScalarProperty Name="c_CODARTICULO" ColumnName="c_CODARTICULO" />
+                <ScalarProperty Name="n_CANTIDAD" ColumnName="n_CANTIDAD" />
+                <ScalarProperty Name="n_COSTO" ColumnName="n_COSTO" />
+                <ScalarProperty Name="n_SUBTOTAL" ColumnName="n_SUBTOTAL" />
+                <ScalarProperty Name="n_IMPUESTO" ColumnName="n_IMPUESTO" />
+                <ScalarProperty Name="n_TOTAL" ColumnName="n_TOTAL" />
+                <ScalarProperty Name="c_TIPOMOV" ColumnName="c_TIPOMOV" />
+                <ScalarProperty Name="n_cant_teorica" ColumnName="n_cant_teorica" />
+                <ScalarProperty Name="n_cant_diferencia" ColumnName="n_cant_diferencia" />
+                <ScalarProperty Name="N_PRECIO" ColumnName="N_PRECIO" />
+                <ScalarProperty Name="N_PRECIO_ORIGINAL" ColumnName="N_PRECIO_ORIGINAL" />
+                <ScalarProperty Name="f_fecha" ColumnName="f_fecha" />
+                <ScalarProperty Name="c_codlocalidad" ColumnName="c_codlocalidad" />
+                <ScalarProperty Name="n_factorcambio" ColumnName="n_factorcambio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="C_DESCRIPCION" ColumnName="C_DESCRIPCION" />
+                <ScalarProperty Name="C_COMPUESTO" ColumnName="C_COMPUESTO" />
+                <ScalarProperty Name="codconcepto" ColumnName="codconcepto" />
+                <ScalarProperty Name="n_descuentogeneral" ColumnName="n_descuentogeneral" />
+                <ScalarProperty Name="n_descuentoespecifico" ColumnName="n_descuentoespecifico" />
+                <ScalarProperty Name="c_documento_origen" ColumnName="c_documento_origen" />
+                <ScalarProperty Name="c_tipodoc_origen" ColumnName="c_tipodoc_origen" />
+                <ScalarProperty Name="N_CANTIDADFAC" ColumnName="N_CANTIDADFAC" />
+                <ScalarProperty Name="ns_descuento" ColumnName="ns_descuento" />
+                <ScalarProperty Name="cs_comprobanteContable" ColumnName="cs_comprobanteContable" />
+                <ScalarProperty Name="cs_codlocalidad" ColumnName="cs_codlocalidad" />
+                <ScalarProperty Name="ns_CantidadEmpaque" ColumnName="ns_CantidadEmpaque" />
+                <ScalarProperty Name="IMPUESTO" ColumnName="IMPUESTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MA_INVENTARIO">
+            <EntityTypeMapping TypeName="VAD10Model.MA_INVENTARIO">
+              <MappingFragment StoreEntitySet="MA_INVENTARIO">
+                <ScalarProperty Name="c_CONCEPTO" ColumnName="c_CONCEPTO" />
+                <ScalarProperty Name="c_DOCUMENTO" ColumnName="c_DOCUMENTO" />
+                <ScalarProperty Name="d_FECHA" ColumnName="d_FECHA" />
+                <ScalarProperty Name="c_DESCRIPCION" ColumnName="c_DESCRIPCION" />
+                <ScalarProperty Name="c_STATUS" ColumnName="c_STATUS" />
+                <ScalarProperty Name="c_CODPROVEEDOR" ColumnName="c_CODPROVEEDOR" />
+                <ScalarProperty Name="c_CODLOCALIDAD" ColumnName="c_CODLOCALIDAD" />
+                <ScalarProperty Name="c_codmoneda" ColumnName="c_codmoneda" />
+                <ScalarProperty Name="n_FACTORCAMBIO" ColumnName="n_FACTORCAMBIO" />
+                <ScalarProperty Name="n_DESCUENTO" ColumnName="n_DESCUENTO" />
+                <ScalarProperty Name="c_OBSERVACION" ColumnName="c_OBSERVACION" />
+                <ScalarProperty Name="c_RELACION" ColumnName="c_RELACION" />
+                <ScalarProperty Name="c_CODCOMPRADOR" ColumnName="c_CODCOMPRADOR" />
+                <ScalarProperty Name="c_DEP_ORIG" ColumnName="c_DEP_ORIG" />
+                <ScalarProperty Name="c_DEP_DEST" ColumnName="c_DEP_DEST" />
+                <ScalarProperty Name="c_MOTIVO" ColumnName="c_MOTIVO" />
+                <ScalarProperty Name="c_codtransporte" ColumnName="c_codtransporte" />
+                <ScalarProperty Name="c_ejecutor" ColumnName="c_ejecutor" />
+                <ScalarProperty Name="c_factura" ColumnName="c_factura" />
+                <ScalarProperty Name="c_transportista" ColumnName="c_transportista" />
+                <ScalarProperty Name="n_cantidad_compra" ColumnName="n_cantidad_compra" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CODCONCEPTO" ColumnName="CODCONCEPTO" />
+                <ScalarProperty Name="cs_comprobanteContable" ColumnName="cs_comprobanteContable" />
+                <ScalarProperty Name="ds_horainicio" ColumnName="ds_horainicio" />
+                <ScalarProperty Name="ds_horafinal" ColumnName="ds_horafinal" />
+                <ScalarProperty Name="CS_CODLOCALIDAD" ColumnName="CS_CODLOCALIDAD" />
+                <ScalarProperty Name="CS_NUMERO_TRANSFERENCIA" ColumnName="CS_NUMERO_TRANSFERENCIA" />
+                <ScalarProperty Name="CS_CODUNIDAD" ColumnName="CS_CODUNIDAD" />
+                <ScalarProperty Name="CS_NUMTRANSF_DESTINO" ColumnName="CS_NUMTRANSF_DESTINO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
